@@ -1,0 +1,4 @@
+aiogram
+httpx
+motor
+python-dotenv
