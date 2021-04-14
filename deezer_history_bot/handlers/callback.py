@@ -16,6 +16,7 @@ async def handler(query: CallbackQuery):
             langs = get_languages()
             await query.message.edit_text("🏳️‍🌈 Choose a language below.", reply_markup=InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(langs[lang], callback_data=f"lang_{lang}")] for lang in langs]))
         else:
+            await set_lang(query.from_user.id, lang[-1])
             await query.message.edit_text(
                 text=get_string(await get_lang(query.from_user.id), "start_2"),
                 parse_mode=ParseMode.HTML,
