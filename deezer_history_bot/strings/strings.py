@@ -11,8 +11,14 @@ class Strings:
     def reload_strings(self):
         self._strings = self._httpx.get(self._source).json()
 
-    def get_string(self, key):
+    def get_languages(self):
+        return {
+            lang: self._strings[lang]['name']
+            for lang in self._strings
+        }
+
+    def get_string(self, lang, key):
         try:
-            return self._strings[key]
+            return self._strings[lang][key]
         except KeyError:
-            return f"Missing string: {key}"
+            return f"Missing string: {lang} - {key}"

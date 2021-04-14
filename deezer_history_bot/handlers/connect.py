@@ -4,18 +4,19 @@ from aiogram.types import (
     InlineKeyboardButton
 )
 
+from ..database.lang import get_lang
 from ..strings import get_string
 
 
 async def handler(message: Message):
     if message.chat.type == "private":
         await message.reply(
-            get_string("connect_1"),
+            get_string(await get_lang(message.from_user.id), "connect_1"),
             reply_markup=InlineKeyboardMarkup(
                 inline_keyboard=[
                     [
                         InlineKeyboardButton(
-                            text=get_string("connect_2"),
+                            text=get_string(await get_lang(message.from_user.id), "connect_2"),
                             url="https://tgcalls.net/deezer",
                         )
                     ]
