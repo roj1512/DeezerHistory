@@ -10,7 +10,7 @@ async def get_lang(user_id: int) -> str:
     if not find:
         return "en"
 
-    return find["access"]
+    return find["lang"]
 
 
 async def set_lang(user_id: int, lang: str):
