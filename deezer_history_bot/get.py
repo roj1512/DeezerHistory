@@ -3,8 +3,6 @@ from uuid import uuid4
 
 from aiogram import types
 
-from .database.lang import get_lang
-
 
 def lt_text(track: dict, user: types.User, s) -> str:
     return s("get_1").format(
@@ -56,9 +54,8 @@ def input_message_content(track: dict, user: types.User) -> types.InputTextMessa
     )
 
 
-def inline_results(query: types.InlineQuery, history: typing.List[dict]):
+def inline_results(query: types.InlineQuery, history: typing.List[dict], s):
     results = []
-    lang = get_lang(query.from_user.id)
 
     for track in history:
         if "album" in track:
@@ -69,9 +66,9 @@ def inline_results(query: types.InlineQuery, history: typing.List[dict]):
                     thumb_url=track["album"]["cover"],
                     title=track["title"],
                     description=track["artist"]["name"],
-                    caption=lt_text(track, query.from_user, lang),
+                    caption=lt_text(track, query.from_user, s),
                     parse_mode=types.ParseMode.HTML,
-                    reply_markup=lt_reply_markup(track, lang),
+                    reply_markup=lt_reply_markup(track, s),
                 )
             )
         else:
@@ -80,11 +77,11 @@ def inline_results(query: types.InlineQuery, history: typing.List[dict]):
                     id=str(uuid4()),
                     title=track["title"],
                     input_message_content=types.InputTextMessageContent(
-                        message_text=lt_text(track, query.from_user, lang),
+                        message_text=lt_text(track, query.from_user, s),
                         parse_mode=types.ParseMode.HTML,
                         disable_web_page_preview=True
                     ),
-                    reply_markup=lt_reply_markup(track, lang),
+                    reply_markup=lt_reply_markup(track, s),
                     description=track["artist"]["name"],
                 )
             )
