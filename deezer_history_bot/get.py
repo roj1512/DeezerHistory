@@ -57,7 +57,7 @@ def input_message_content(track: dict, user: types.User) -> types.InputTextMessa
     )
 
 
-async def inline_results(query: types.InlineQuery, history: typing.List[dict]):
+def inline_results(query: types.InlineQuery, history: typing.List[dict]):
     results = []
     lang = get_lang(query.from_user.id)
 

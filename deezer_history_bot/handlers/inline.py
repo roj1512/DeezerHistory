@@ -11,7 +11,7 @@ async def handler(query: InlineQuery, s):
         history = await get_history(query.from_user.id)
 
         await query.answer(
-            results=await get.inline_results(query, history),
+            results=get.inline_results(query, history),
             cache_time=0,
             is_personal=True,
         )
