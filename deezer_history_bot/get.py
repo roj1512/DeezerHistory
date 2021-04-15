@@ -59,7 +59,7 @@ def input_message_content(track: dict, user: types.User) -> types.InputTextMessa
 
 async def inline_results(query: types.InlineQuery, history: typing.List[dict]):
     results = []
-    lang = await get_lang(query.from_user.id)
+    lang = get_lang(query.from_user.id)
 
     for track in history:
         if "album" in track:
@@ -96,7 +96,7 @@ async def inline_results(query: types.InlineQuery, history: typing.List[dict]):
 def preview_data(query: types.CallbackQuery):
     text, entities = (
         (
-            query.message.text or query.message.caption
+                query.message.text or query.message.caption
         ).split("\n")[-1].replace("\xad", "")[:-1].split("—"),
         query.message.caption_entities or query.message.entities
     )
