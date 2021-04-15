@@ -6,6 +6,7 @@ from aiogram.types import (
     InlineKeyboardButton
 )
 
+from .database.lang import get_lang
 from .strings import get_string
 
 
@@ -22,12 +23,12 @@ def errors(func: Callable) -> Callable:
 
             if error in ("AccessError: Not authorized", "OAuthException: Invalid OAuth access token.",):
                 await message.reply(
-                    get_string("errors_1"),
+                    get_string(get_lang(message.from_user.id), "errors_1"),
                     reply_markup=InlineKeyboardMarkup(
                         inline_keyboard=[
                             [
                                 InlineKeyboardButton(
-                                    get_string("errors_2"),
+                                    get_string(get_lang(message.from_user.id), "errors_2"),
                                     f"https://t.me/{(await message.bot.me).username}"
                                 )
                             ]
