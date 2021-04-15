@@ -14,9 +14,10 @@ async def handler(query: CallbackQuery):
         lang = query.data.split("_")
         if len(lang) == 1:
             langs = get_languages()
-            await query.message.edit_text("🏳️‍🌈 Choose a language below.", reply_markup=InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(langs[lang], callback_data=f"lang_{lang}")] for lang in langs]))
+            await query.message.edit_text("🏳️‍🌈 Choose a language below.", reply_markup=InlineKeyboardMarkup(
+                inline_keyboard=[[InlineKeyboardButton(langs[lang], callback_data=f"lang_{lang}")] for lang in langs]))
         else:
-            await set_lang(query.from_user.id, lang[-1])
+            set_lang(query.from_user.id, lang[-1])
             await query.message.edit_text(
                 text=s(get_lang(query.from_user.id), "start_2"),
                 parse_mode=ParseMode.HTML,
