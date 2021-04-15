@@ -20,14 +20,14 @@ async def handler(message: Message, s):
         if "album" in track:
             await message.reply_photo(
                 photo=track["album"]["cover_xl"],
-                caption=get.lt_text(track, message.from_user),
+                caption=get.lt_text(track, message.from_user, s),
                 parse_mode=ParseMode.HTML,
-                reply_markup=get.lt_reply_markup(track),
+                reply_markup=get.lt_reply_markup(track, s),
             )
         else:
             await message.reply(
-                text=get.lt_text(track, message.from_user),
+                text=get.lt_text(track, message.from_user, s),
                 parse_mode=ParseMode.HTML,
                 disable_web_page_preview=True,
-                reply_markup=get.lt_reply_markup(track),
+                reply_markup=get.lt_reply_markup(track, s),
             )

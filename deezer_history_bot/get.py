@@ -4,28 +4,27 @@ from uuid import uuid4
 from aiogram import types
 
 from .database.lang import get_lang
-from .strings import get_string
 
 
-def lt_text(track: dict, user: types.User, lang: str) -> str:
-    return get_string(lang, "get_1").format(
+def lt_text(track: dict, user: types.User, s) -> str:
+    return s("get_1").format(
         user=user.full_name,
         artist=track["artist"]["name"],
         title=track["title"],
     )
 
 
-def lt_reply_markup(track: dict, lang: str):
+def lt_reply_markup(track: dict, s):
     inline_keyboard = [
         [
             types.InlineKeyboardButton(
-                text=get_string(lang, "get_2"),
+                text=s("get_2"),
                 url=track["link"]
             )
         ],
         [
             types.InlineKeyboardButton(
-                get_string(lang, "get_3"),
+                s("get_3"),
                 f"https://t.me/share/url?url={track['link']}"
             ),
         ]
