@@ -1,8 +1,8 @@
-from httpx import AsyncClient
 from aiogram.types import Message, ParseMode
+from httpx import AsyncClient
 
-from ..access import get_history
 from .. import get
+from ..access import get_history
 from ..errors import errors
 from ..strings import multilingual
 
@@ -11,7 +11,7 @@ httpx = AsyncClient()
 
 @errors
 @multilingual
-async def handler(message: Message):
+async def handler(message: Message, s):
     if message.chat.type == "private":
         await message.reply(s("status_1"))
     else:
