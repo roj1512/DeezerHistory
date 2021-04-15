@@ -19,4 +19,4 @@ def multilingual(func):
             lambda key: get_string(get_lang(_.from_user.id), key)
         )
 
-    return decorator()
+    return decorator
