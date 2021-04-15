@@ -4,16 +4,16 @@ from aiogram.types import Message, ParseMode
 from ..access import get_history
 from .. import get
 from ..errors import errors
-from ..database.lang import get_lang
-from ..strings import get_string
+from ..strings import multilingual
 
 httpx = AsyncClient()
 
 
 @errors
+@multilingual
 async def handler(message: Message):
     if message.chat.type == "private":
-        await message.reply(get_string(await get_lang(message.from_user.id), "status_1"))
+        await message.reply(s("status_1"))
     else:
         track: dict = (await get_history(message.from_user.id))[get.indent(message)]
 

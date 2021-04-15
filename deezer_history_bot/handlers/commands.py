@@ -4,19 +4,19 @@ from aiogram.types import (
     InlineKeyboardButton
 )
 
-from ..database.lang import get_lang
-from ..strings import get_string
+from ..strings import multilingual
 
 
-async def handler(message: Message):
+@multilingual
+async def handler(message: Message, s):
     if message.chat.type == "private":
         await message.reply(
-            get_string(await get_lang(message.from_user.id), "commands_1"),
+            s("commands_1"),
             reply_markup=InlineKeyboardMarkup(
                 inline_keyboard=[
                     [
                         InlineKeyboardButton(
-                            text=get_string(await get_lang(message.from_user.id), "commands_2"),
+                            text=s("commands_2"),
                             switch_inline_query=""
                         )
                     ]

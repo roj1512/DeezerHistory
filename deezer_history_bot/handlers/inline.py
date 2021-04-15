@@ -1,12 +1,12 @@
 from aiogram.types import InlineQuery
 
-from ..access import get_history
 from .. import get
-from ..database.lang import get_lang
-from ..strings import get_string
+from ..access import get_history
+from ..strings import multilingual
 
 
-async def handler(query: InlineQuery):
+@multilingual
+async def handler(query: InlineQuery, s):
     try:
         history = await get_history(query.from_user.id)
 
@@ -20,6 +20,6 @@ async def handler(query: InlineQuery):
             results=[],
             cache_time=0,
             is_personal=True,
-            switch_pm_text=get_string(await get_lang(query.from_user.id), "inline_1"),
+            switch_pm_text=s("inline_1"),
             switch_pm_parameter="start",
         )

@@ -1,11 +1,11 @@
 from ..errors import Error
 from . import db
 
-_access = db.access
+collection = db.access
 
 
-async def get_access(user_id: int) -> str:
-    find = await _access.find_one({"user_id": user_id})
+def get_access(user_id: int) -> str:
+    find = collection.find_one({"user_id": user_id})
 
     if not find:
         raise Error("AccessError: Not authorized")
@@ -13,8 +13,8 @@ async def get_access(user_id: int) -> str:
     return find["access"]
 
 
-async def set_access(user_id: int, access: str):
-    await _access.update_one(
+def set_access(user_id: int, access: str):
+    collection.update_one(
         {
             "user_id": user_id
         },

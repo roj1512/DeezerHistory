@@ -1,6 +1,6 @@
-from motor.motor_asyncio import AsyncIOMotorClient
+from pymongo import MongoClient
 
 from ..config import DB_URI
 
-client = AsyncIOMotorClient(DB_URI)
+client = MongoClient(DB_URI)
 db = client.callsmusic

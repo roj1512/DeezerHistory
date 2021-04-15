@@ -1,11 +1,10 @@
-from ..errors import Error
 from . import db
 
-_lang = db.lang
+collection = db.lang
 
 
-async def get_lang(user_id: int) -> str:
-    find = await _lang.find_one({"user_id": user_id})
+def get_lang(user_id: int) -> str:
+    find = collection.find_one({"user_id": user_id})
 
     if not find:
         return "en"
@@ -13,8 +12,8 @@ async def get_lang(user_id: int) -> str:
     return find["lang"]
 
 
-async def set_lang(user_id: int, lang: str):
-    await _lang.update_one(
+def set_lang(user_id: int, lang: str):
+    collection.update_one(
         {
             "user_id": user_id
         },

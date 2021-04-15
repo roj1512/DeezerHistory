@@ -6,7 +6,7 @@ from aiogram.types import (
 )
 
 from ..database.lang import set_lang, get_lang
-from ..strings import get_string, get_languages
+from ..strings import get_string as s, get_languages
 
 
 async def handler(query: CallbackQuery):
@@ -18,19 +18,19 @@ async def handler(query: CallbackQuery):
         else:
             await set_lang(query.from_user.id, lang[-1])
             await query.message.edit_text(
-                text=get_string(await get_lang(query.from_user.id), "start_2"),
+                text=s(get_lang(query.from_user.id), "start_2"),
                 parse_mode=ParseMode.HTML,
                 reply_markup=InlineKeyboardMarkup(
                     inline_keyboard=[
                         [
                             InlineKeyboardButton(
-                                get_string(await get_lang(query.from_user.id), "start_3"),
+                                s(get_lang(query.from_user.id), "start_3"),
                                 switch_inline_query=""
                             )
                         ],
                         [
                             InlineKeyboardButton(
-                                get_string(await get_lang(query.from_user.id), "start_4"),
+                                s(get_lang(query.from_user.id), "start_4"),
                                 f"https://t.me/{(await query.bot.me).username}?startgroup=start"
                             )
                         ],
