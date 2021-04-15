@@ -39,7 +39,7 @@ async def handler(message: Message, s):
                         ],
                         [
                             InlineKeyboardButton(
-                                "🏳️‍🌈 Language",
+                                "Language",
                                 callback_data="lang"
                             )
                         ]
