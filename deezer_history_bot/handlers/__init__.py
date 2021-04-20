@@ -15,4 +15,4 @@ def register_handlers(dp: Dispatcher):
     # Groups
     dp.register_message_handler(status.handler, commands=['status'])
     # Inline
-    dp.register_inline_handler(inline)
+    dp.register_inline_handler(inline.handler)
