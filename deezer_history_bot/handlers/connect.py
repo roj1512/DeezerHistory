@@ -11,7 +11,7 @@ async def handler(message: Message):
 2. Visit https://tgcalls.net/deezer.
 3. Click “Continue”, after that “Accept”.
 4. That should return you to Telegram, once you’re there click “Start”.
-5. Done, you now can use my /commands!"
+5. Done, you now can use my /commands!
             """,
             reply_markup=InlineKeyboardMarkup(
                 inline_keyboard=[
