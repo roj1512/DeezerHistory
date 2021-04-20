@@ -3,7 +3,7 @@ from aiogram.types import InlineKeyboardMarkup
 from aiogram.types import Message
 
 
-async def handler(message: Message, s):
+async def handler(message: Message):
     if message.chat.type == 'private':
         await message.reply(
             """

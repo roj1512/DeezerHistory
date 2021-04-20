@@ -3,15 +3,15 @@ from aiogram.types import InlineKeyboardMarkup
 from aiogram.types import Message
 
 
-async def handler(message: Message, s):
+async def handler(message: Message):
     if message.chat.type == 'private':
         await message.reply(
             """
-<b>Private Commands</b>
+<b>Private</b>
 /connect - get steps on connecting your Deezer account.
 /commands - send this list.
 
-<b>Group Commands</b>
+<b>Groups</b>
 /status - show others what you were listening to, pass a number to show a different track.
 
 <b>Inline</b>

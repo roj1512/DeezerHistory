@@ -10,7 +10,7 @@ httpx = AsyncClient()
 
 
 @errors
-async def handler(message: Message, s):
+async def handler(message: Message):
     if message.chat.type == 'private':
         await message.reply('You should send this in a group!')
     else:

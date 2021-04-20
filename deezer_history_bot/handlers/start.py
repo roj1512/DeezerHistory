@@ -6,7 +6,7 @@ from aiogram.types import ParseMode
 from ..database.access import set_access
 
 
-async def handler(message: Message, s):
+async def handler(message: Message):
     if message.chat.type == 'private':
         if (
                 len(message.text.split()) == 2

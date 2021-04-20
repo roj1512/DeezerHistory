@@ -4,7 +4,7 @@ from .. import get
 from ..access import get_history
 
 
-async def handler(query: InlineQuery, s):
+async def handler(query: InlineQuery):
     try:
         history = await get_history(query.from_user.id)
 
