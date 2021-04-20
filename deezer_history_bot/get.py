@@ -4,32 +4,32 @@ from uuid import uuid4
 from aiogram import types
 
 
-def lt_text(track: dict, user: types.User, s) -> str:
-    return s("get_1").format(
+def lt_text(track: dict, user: types.User) -> str:
+    return '{user} was listening to\n{artist} — <b>{title}</>.'.format(
         user=user.full_name,
-        artist=track["artist"]["name"],
-        title=track["title"],
+        artist=track['artist']['name'],
+        title=track['title'],
     )
 
 
-def lt_reply_markup(track: dict, s):
+def lt_reply_markup(track: dict):
     inline_keyboard = [
         [
             types.InlineKeyboardButton(
-                text=s("get_2"),
-                url=track["link"]
-            )
+                text='Play on Deezer',
+                url=track['link'],
+            ),
         ],
         [
             types.InlineKeyboardButton(
-                s("get_3"),
-                f"https://t.me/share/url?url={track['link']}"
+                'Share',
+                f"https://t.me/share/url?url={track['link']}",
             ),
-        ]
+        ],
     ]
 
     return types.InlineKeyboardMarkup(
-        inline_keyboard=inline_keyboard
+        inline_keyboard=inline_keyboard,
     )
 
 
@@ -50,40 +50,40 @@ def input_message_content(track: dict, user: types.User) -> types.InputTextMessa
     return types.InputTextMessageContent(
         message_text=lt_text(track, user),
         parse_mode=types.ParseMode.HTML,
-        disable_web_page_preview=True
+        disable_web_page_preview=True,
     )
 
 
-def inline_results(query: types.InlineQuery, history: typing.List[dict], s):
+def inline_results(query: types.InlineQuery, history: typing.List[dict]):
     results = []
 
     for track in history:
-        if "album" in track:
+        if 'album' in track:
             results.append(
                 types.InlineQueryResultPhoto(
                     id=str(uuid4()),
-                    photo_url=track["album"]["cover_xl"],
-                    thumb_url=track["album"]["cover"],
-                    title=track["title"],
-                    description=track["artist"]["name"],
-                    caption=lt_text(track, query.from_user, s),
+                    photo_url=track['album']['cover_xl'],
+                    thumb_url=track['album']['cover'],
+                    title=track['title'],
+                    description=track['artist']['name'],
+                    caption=lt_text(track, query.from_user),
                     parse_mode=types.ParseMode.HTML,
-                    reply_markup=lt_reply_markup(track, s),
-                )
+                    reply_markup=lt_reply_markup(track),
+                ),
             )
         else:
             results.append(
                 types.InlineQueryResultArticle(
                     id=str(uuid4()),
-                    title=track["title"],
+                    title=track['title'],
                     input_message_content=types.InputTextMessageContent(
-                        message_text=lt_text(track, query.from_user, s),
+                        message_text=lt_text(track, query.from_user),
                         parse_mode=types.ParseMode.HTML,
-                        disable_web_page_preview=True
+                        disable_web_page_preview=True,
                     ),
-                    reply_markup=lt_reply_markup(track, s),
-                    description=track["artist"]["name"],
-                )
+                    reply_markup=lt_reply_markup(track),
+                    description=track['artist']['name'],
+                ),
             )
 
     return results
@@ -92,14 +92,14 @@ def inline_results(query: types.InlineQuery, history: typing.List[dict], s):
 def preview_data(query: types.CallbackQuery):
     text, entities = (
         (
-                query.message.text or query.message.caption
-        ).split("\n")[-1].replace("\xad", "")[:-1].split("—"),
-        query.message.caption_entities or query.message.entities
+            query.message.text or query.message.caption
+        ).split('\n')[-1].replace('\xad', '')[:-1].split('—'),
+        query.message.caption_entities or query.message.entities,
     )
     text = text
 
     return {
-        "url": entities[-1].url,
-        "title": text[0].rstrip(),
-        "artist": text[1],
+        'url': entities[-1].url,
+        'title': text[0].rstrip(),
+        'artist': text[1],
     }

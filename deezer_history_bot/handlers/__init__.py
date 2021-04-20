@@ -1,21 +1,15 @@
 from aiogram import Dispatcher
-from . import (
-    start,
-    connect,
-    commands,
-    status,
-    reload_strings,
-    inline,
-    callback
-)
+
+from . import commands
+from . import connect
+from . import inline
+from . import start
+from . import status
 
 
 def register_handlers(dp: Dispatcher):
-    dp.register_callback_query_handler(callback.handler)
-    dp.register_message_handler(start.handler, commands=["start"])
-    dp.register_message_handler(status.handler, commands=["status"])
-    dp.register_message_handler(connect.handler, commands=["connect"])
-    dp.register_message_handler(commands.handler, commands=["commands"])
-    dp.register_message_handler(
-        reload_strings.handler, commands=["reload_strings"])
-    dp.register_inline_handler(inline.handler)
+    dp.register_message_handler(start.handler, commands=['start'])
+    dp.register_message_handler(status.handler, commands=['status'])
+    dp.register_message_handler(connect.handler, commands=['connect'])
+    dp.register_message_handler(commands.handler, commands=['commands'])
+    dp.register_inline_handler(inline)

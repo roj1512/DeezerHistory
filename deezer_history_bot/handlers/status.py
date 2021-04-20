@@ -1,33 +1,23 @@
-from aiogram.types import Message, ParseMode
+from aiogram.types import Message
+from aiogram.types import ParseMode
 from httpx import AsyncClient
 
 from .. import get
 from ..access import get_history
 from ..errors import errors
-from ..strings import multilingual
 
 httpx = AsyncClient()
 
 
 @errors
-@multilingual
 async def handler(message: Message, s):
-    if message.chat.type == "private":
-        await message.reply(s("status_1"))
+    if message.chat.type == 'private':
+        await message.reply('You should send this in a group!')
     else:
         track: dict = (await get_history(message.from_user.id))[get.indent(message)]
-
-        if "album" in track:
-            await message.reply_photo(
-                photo=track["album"]["cover_xl"],
-                caption=get.lt_text(track, message.from_user, s),
-                parse_mode=ParseMode.HTML,
-                reply_markup=get.lt_reply_markup(track, s),
-            )
-        else:
-            await message.reply(
-                text=get.lt_text(track, message.from_user, s),
-                parse_mode=ParseMode.HTML,
-                disable_web_page_preview=True,
-                reply_markup=get.lt_reply_markup(track, s),
-            )
+        await message.reply_photo(
+            photo=track['album']['cover_xl'],
+            caption=get.lt_text(track, message.from_user),
+            parse_mode=ParseMode.HTML,
+            reply_markup=get.lt_reply_markup(track),
+        )

@@ -1,13 +1,8 @@
 from typing import Callable
 
-from aiogram.types import (
-    Message,
-    InlineKeyboardMarkup,
-    InlineKeyboardButton
-)
-
-from .database.lang import get_lang
-from .strings import get_string
+from aiogram.types import InlineKeyboardButton
+from aiogram.types import InlineKeyboardMarkup
+from aiogram.types import Message
 
 
 class Error(Exception):
@@ -20,23 +15,20 @@ def errors(func: Callable) -> Callable:
             return await func(message)
         except Error as e:
             error = str(e)
-
-            if error in ("AccessError: Not authorized", "OAuthException: Invalid OAuth access token.",):
+            if error in ('AccessError: Not authorized', 'OAuthException: Invalid OAuth access token.'):
                 await message.reply(
-                    get_string(get_lang(message.from_user.id), "errors_1"),
+                    'You need to connect your Deezer account first. PM me and use the /connect command.',
                     reply_markup=InlineKeyboardMarkup(
                         inline_keyboard=[
                             [
                                 InlineKeyboardButton(
-                                    get_string(get_lang(message.from_user.id), "errors_2"),
-                                    f"https://t.me/{(await message.bot.me).username}"
-                                )
-                            ]
-                        ]
-                    )
+                                    'PM me',
+                                    f'https://t.me/{(await message.bot.me).username}',
+                                ),
+                            ],
+                        ],
+                    ),
                 )
                 return
-
             await message.reply(str(e))
-
     return decorator

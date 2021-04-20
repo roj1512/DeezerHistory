@@ -1,50 +1,44 @@
-from aiogram.types import (
-    Message,
-    InlineKeyboardMarkup,
-    InlineKeyboardButton,
-    ParseMode
-)
+from aiogram.types import InlineKeyboardButton
+from aiogram.types import InlineKeyboardMarkup
+from aiogram.types import Message
+from aiogram.types import ParseMode
 
 from ..database.access import set_access
-from ..strings import multilingual
 
 
-@multilingual
 async def handler(message: Message, s):
-    if message.chat.type == "private":
+    if message.chat.type == 'private':
         if (
                 len(message.text.split()) == 2
-                and message.text.split()[1].startswith("sak")
+                and message.text.split()[1].startswith('sak')
                 and len(message.text.split()[1][3:].strip().rstrip()) != 0
         ):
             await set_access(message.from_user.id, message.text.split()[1][3:].strip().rstrip())
-            await message.reply(s("start_1"))
+            await message.reply('Credentials updated!')
         else:
             await message.reply(
-                text=s("start_2"),
+                text="""
+I can let others know what you were listening to on Deezer.
+
+Use /connect for steps on connecting your account or /commands to know my commands.
+                """,
                 parse_mode=ParseMode.HTML,
                 reply_markup=InlineKeyboardMarkup(
                     inline_keyboard=[
                         [
                             InlineKeyboardButton(
-                                s("start_3"),
-                                switch_inline_query=""
-                            )
+                                'Use me inline',
+                                switch_inline_query='',
+                            ),
                         ],
                         [
                             InlineKeyboardButton(
-                                s("start_4"),
-                                f"https://t.me/{(await message.bot.me).username}?startgroup=start"
-                            )
+                                'Add me to a group',
+                                f'https://t.me/{(await message.bot.me).username}?startgroup=start',
+                            ),
                         ],
-                        [
-                            InlineKeyboardButton(
-                                "Language",
-                                callback_data="lang"
-                            )
-                        ]
-                    ]
-                )
+                    ],
+                ),
             )
-    elif message.chat.type in ("group", "supergroup",):
-        await message.reply(s("start_5"))
+    elif message.chat.type in ('group', 'supergroup'):
+        await message.reply('I’m on the go.')
