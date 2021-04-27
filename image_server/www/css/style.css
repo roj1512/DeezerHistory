@@ -61,7 +61,7 @@ span {
 
 .was-listening-to {
   position: absolute;
-  transform: translate(250px, 52.5px);
+  transform: translate(250px, 50px);
   color: #c5c5c5;
   font-size: 20pt;
   margin-top: 5px;
@@ -69,7 +69,7 @@ span {
 
 .title {
   position: absolute;
-  transform: translate(250px, 115px);
+  transform: translate(250px, 112.5px);
   font-size: 25pt;
   width: 350px;
   margin-top: 5px;
@@ -77,7 +77,7 @@ span {
 
 .artist {
   position: absolute;
-  transform: translate(250px, 154px);
+  transform: translate(250px, 155px);
   font-size: 20pt;
   width: 350px;
   margin-top: 5px;
@@ -85,7 +85,7 @@ span {
 
 .album {
   position: absolute;
-  transform: translate(250px, 184px);
+  transform: translate(250px, 185px);
   font-size: 20pt;
   width: 350px;
   margin-top: 5px;
