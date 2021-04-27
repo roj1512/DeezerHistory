@@ -1,6 +1,7 @@
 from aiogram.types import InlineKeyboardButton
 from aiogram.types import InlineKeyboardMarkup
-from aiogram.types import Message, ParseMode
+from aiogram.types import Message
+from aiogram.types import ParseMode
 
 
 async def handler(message: Message):
