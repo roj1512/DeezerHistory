@@ -13,8 +13,8 @@ async def create_image(track: dict, user: User) -> BytesIO:
             'image': track['album']['cover_big'],
             'user': user.first_name,
             'title': track['title'],
-            'artist': track['artist']['title'],
-            'album': track['album']['name'],
+            'artist': track['artist']['name'],
+            'album': track['album']['title'],
             'bot': 't.me/deezerhistorybot',
         },
     )
