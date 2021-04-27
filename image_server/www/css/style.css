@@ -13,11 +13,16 @@
   border: none;
 }
 
+body {
+  width: 650px;
+  height: 250px;
+}
+
 span {
   display: block;
 }
 
-.bg {
+.bbg {
   position: fixed;
   left: 0;
   right: 0;
@@ -55,7 +60,7 @@ span {
 
 .texts {
   position: absolute;
-  top: 10%;
+  margin-top: 25px !important;
   left: 250px;
   width: calc(650px - 250px - 25px);
 }
