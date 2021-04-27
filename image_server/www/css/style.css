@@ -25,7 +25,7 @@ span {
   left: 50%;
   transform: translate(-50%, -50%);
   background-size: cover;
-  filter: blur(100px);
+  filter: blur(200px);
   -webkit-filter: blur(8px);
 }
 
