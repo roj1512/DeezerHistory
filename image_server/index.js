@@ -11,6 +11,7 @@ app.get("/image", async (req, res) => {
     "user" in req.query &&
     "title" in req.query &&
     "artist" in req.query &&
+    "album" in req.query &&
     "bot" in req.query
   ) {
     res.setHeader("Content-Type", "image/jpeg");
@@ -21,10 +22,11 @@ app.get("/image", async (req, res) => {
         req.query.user,
         req.query.title,
         req.query.artist,
+        req.query.album,
         req.query.bot
       )
     );
-  } else res.json({ error: "image, user, title, artist and bot are required" });
+  } else res.json({ error: "image, user, title, artist, album and bot are required" });
 });
 
 app.listen(port);
