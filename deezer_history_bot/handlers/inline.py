@@ -7,7 +7,7 @@ from ..access import get_history
 async def handler(query: InlineQuery):
     try:
         await query.answer(
-            results=await get.inline_results(query, await get_history(query.from_user.id)),
+            results=await get.inline_results(query, await get_history(query.from_user.id), int((query.query.split() or ['0'])[0])),
             cache_time=0,
             is_personal=True,
         )

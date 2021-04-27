@@ -40,17 +40,14 @@ def indent(status_command_message: Message) -> int:
     return _
 
 
-async def inline_results(query: InlineQuery, history: typing.List[dict]):
-    results = []
-    for track in history:
-        results.append(
-            InlineQueryResultPhoto(
-                id=str(uuid4()),
-                photo_url=await create_image(track, query.from_user),
-                thumb_url=track['album']['cover'],
-                title=track['title'],
-                description=track['artist']['name'],
-                reply_markup=lt_reply_markup(track),
-            ),
-        )
-    return results
+async def inline_results(query: InlineQuery, history: typing.List[dict], indent: int = 0):
+    return [
+        InlineQueryResultPhoto(
+            id=str(uuid4()),
+            photo_url=await create_image(history[indent], query.from_user),
+            thumb_url=history[indent]['album']['cover'],
+            title=history[indent]['title'],
+            description=history[indent]['artist']['name'],
+            reply_markup=lt_reply_markup(history[indent]),
+        ),
+    ]
