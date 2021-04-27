@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 const path = require("path");
 const app = require("express")();
 const { getImage } = require("./image");
@@ -27,4 +27,4 @@ app.get("/image", async (req, res) => {
   } else res.json({ error: "image, user, title, artist and bot are required" });
 });
 
-app.listen(port);
+app.listen(port, "0.0.0.0");

@@ -9,9 +9,9 @@ from . import status
 
 def register_handlers(dp: Dispatcher):
     # Private
-    dp.register_message_handler(start.handler, commands=['start'])
     dp.register_message_handler(commands.handler, commands=['commands'])
     dp.register_message_handler(connect.handler, commands=['connect'])
+    dp.register_message_handler(start.handler, commands=['start'])
     # Groups
     dp.register_message_handler(status.handler, commands=['status'])
     # Inline

@@ -1,15 +1,17 @@
-from io import BytesIO
 from urllib.parse import urlencode
 
-from httpx import AsyncClient
+from aiogram.types import User
 
-from .config import IMAGE_SERVER_ADDRESS
-
-httpx = AsyncClient()
+from .config import IMAGE_SERVER_PUBLIC_ADDRESS
 
 
-async def create_image(image: str, user: str, title: str, artist: str, bot: str = 't.me/deezerhistorybot') -> BytesIO:
-    response = await httpx.get(IMAGE_SERVER_ADDRESS + '?' + urlencode({'image': image, 'user': user, 'title': title, 'artist': artist, 'bot': bot}))
-    bytesio = BytesIO(response.content)
-    bytesio.name = 'image.jpeg'
-    return bytesio
+async def create_image(track: dict, user: User) -> str:
+    return IMAGE_SERVER_PUBLIC_ADDRESS + '?' + urlencode(
+        {
+            'image': track['album']['cover'],
+            'user': user.first_name,
+            'title': track['title'],
+            'artist': track['artist']['name'],
+            'bot': 't.me/deezerhistorybot',
+        },
+    )

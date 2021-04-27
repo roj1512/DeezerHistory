@@ -7,10 +7,10 @@ function getQueryString(name, url = window.location.href) {
   return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-document.querySelector("div.bg").style.backgroundImage =
-  "url(" + getQueryString("image") + ")";
-document.querySelector(".image").style.backgroundImage =
-  "url(" + getQueryString("image") + ")";
+const image = "url(" + getQueryString("image") + ")";
+
+document.querySelector("div.bg").style.backgroundImage = image;
+document.querySelector(".image").style.backgroundImage = image;
 document.querySelector(".user").innerHTML = getQueryString("user");
 document.querySelector(".title").innerHTML = getQueryString("title");
 document.querySelector(".artist").innerHTML = getQueryString("artist");

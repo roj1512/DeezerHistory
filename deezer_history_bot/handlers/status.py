@@ -1,5 +1,4 @@
 from aiogram.types import Message
-from aiogram.types import ParseMode
 from httpx import AsyncClient
 
 from .. import get
@@ -17,10 +16,6 @@ async def handler(message: Message):
     else:
         track: dict = (await get_history(message.from_user.id))[get.indent(message)]
         await message.reply_photo(
-            await create_image(track['album']['cover'], message.from_user.first_name, track['title'], track['artist']['name']),
-            caption=get.lt_text(
-                track, message.from_user,
-            ),
-            parse_mode=ParseMode.HTML,
+            photo=await create_image(track, message.from_user),
             reply_markup=get.lt_reply_markup(track),
         )
