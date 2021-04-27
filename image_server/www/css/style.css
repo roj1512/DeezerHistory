@@ -18,8 +18,8 @@ span {
 
 .bg {
   position: absolute;
-  width: 750px;
-  height: 350px;
+  width: 650px;
+  height: 250px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
