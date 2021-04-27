@@ -6,4 +6,4 @@ load_dotenv()
 
 BOT_TOKEN = getenv('BOT_TOKEN')
 DB_URI = getenv('DB_URI')
-IMAGE_SERVER_PUBLIC_ADDRESS = f'http://{getenv("IMAGE_SERVER_PUBLIC_ADDRESS")}/image'
+IMAGE_SERVER_PUBLIC_ADDRESS = f'{getenv("IMAGE_SERVER_PUBLIC_ADDRESS")}/image'
