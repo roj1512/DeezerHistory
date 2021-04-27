@@ -2,7 +2,7 @@ from io import BytesIO
 from urllib.parse import urlencode
 
 from aiogram.types import User
-from http_client import client
+from .http_client import client
 
 from .config import IMAGE_SERVER_ADDRESS
 
