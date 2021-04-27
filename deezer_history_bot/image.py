@@ -2,9 +2,9 @@ from io import BytesIO
 from urllib.parse import urlencode
 
 from aiogram.types import User
-from .http_client import client
 
 from .config import IMAGE_SERVER_ADDRESS
+from .http_client import client
 
 
 async def create_image(track: dict, user: User) -> BytesIO:
