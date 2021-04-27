@@ -14,6 +14,7 @@ async def create_image(track: dict, user: User) -> BytesIO:
             'user': user.first_name,
             'title': track['title'],
             'artist': track['artist']['name'],
+            'album': track['album']['name'],
             'bot': 't.me/deezerhistorybot',
         },
     )
