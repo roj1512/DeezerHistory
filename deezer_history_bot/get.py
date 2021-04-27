@@ -9,11 +9,12 @@ from aiogram.types import InlineQuery
 from aiogram.types import InlineQueryResultCachedPhoto
 from aiogram.types import Message
 
+from .config import CACHE_CHAT_ID
 from .image import create_image
 
 
 async def photo_file_id_from_bytes_io(bot: Bot, bytes_io: BytesIO) -> str:
-    return (await bot.send_photo(-1001243271409, bytes_io)).photo[1].file_id
+    return (await bot.send_photo(CACHE_CHAT_ID, bytes_io)).photo[1].file_id
 
 
 def lt_reply_markup(track: dict):
