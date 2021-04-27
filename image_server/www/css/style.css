@@ -39,11 +39,12 @@ span {
 }
 
 .image {
+  background-size: contain;
   position: absolute;
+  top: 25px;
+  left: 25px;
   width: 200px;
   height: 200px;
-  background-size: contain;
-  transform: translate(25px, 25px);
 }
 
 .truncate {
@@ -52,55 +53,32 @@ span {
   text-overflow: ellipsis;
 }
 
-.user {
+.texts {
   position: absolute;
-  top: 22.5px;
+  top: 25px;
   left: 250px;
+  width: calc(650px - 250px - 25px);
+}
+
+.user {
   font-size: 18pt;
-  line-height: 18pt;
-  height: 18pt;
-  width: 250px;
 }
 
 .was-listening-to {
-  position: absolute;
-  top: calc(22.5px + 18pt + 5px);
-  left: 250px;
   font-size: 18pt;
-  line-height: 18pt;
-  height: 18pt;
   color: #c5c5c5;
 }
 
 .title {
-  position: absolute;
-  top: 100%;
-  left: 250px;
-  transform: translateY(calc(-100% + -40pt + -25px));
   font-size: 25pt;
-  line-height: 25pt;
-  height: 25pt;
-  width: 350px;
 }
 
 .artist {
-  position: absolute;
-  top: 100%;
-  left: 250px;
-  transform: translateY(calc(-200% + -25px));
-  font-size: 20pt;
-  line-height: 20pt;
-  height: 20pt;
+  font-size: 18pt;
 }
 
 .album {
-  position: absolute;
-  top: 100%;
-  left: 250px;
-  transform: translateY(calc(-100% + -25px));
-  font-size: 20pt;
-  line-height: 20pt;
-  height: 20pt;
+  font-size: 18pt;
 }
 
 .bot {
