@@ -10,6 +10,7 @@
   font-family: Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   user-select: none;
+  border: none;
 }
 
 span {
@@ -17,15 +18,14 @@ span {
 }
 
 .bg {
-  position: absolute;
-  width: 650px;
-  height: 250px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: fixed;
+  left: 0;
+  right: 0;
+  display: block;
+  width: 750px;
+  height: 350px;
   background-size: cover;
-  filter: blur(200px);
-  -webkit-filter: blur(8px);
+  filter: blur(50px);
 }
 
 .container {
@@ -55,9 +55,8 @@ span {
 
 .texts {
   position: absolute;
-  top: 100%;
+  top: 10%;
   left: 250px;
-  transform: translateY(-50%);
   width: calc(650px - 250px - 25px);
 }
 
