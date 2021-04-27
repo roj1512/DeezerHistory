@@ -7,13 +7,13 @@ var browser, page;
   await page.setViewport({ width: 640, height: 250 });
 })();
 
-const getImage = async (url, image, user, title, artist, bot) => {
+const getImage = async (url, image, user, title, album, artist, bot) => {
   await page.goto(
     `${url}?image=${encodeURIComponent(image)}&user=${encodeURIComponent(
       user
     )}&title=${encodeURIComponent(title)}&artist=${encodeURIComponent(
       artist
-    )}&bot=${encodeURIComponent(bot)}`
+    )}&album=${encodeURIComponent(album)}&bot=${encodeURIComponent(bot)}`
   );
   return await page.screenshot();
 };
