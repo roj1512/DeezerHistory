@@ -10,10 +10,10 @@ from .http_client import client
 async def create_image(track: dict, user: User) -> BytesIO:
     url = IMAGE_SERVER_ADDRESS + '?' + urlencode(
         {
-            'image': track['album']['cover'],
+            'image': track['album']['cover_lg'],
             'user': user.first_name,
             'title': track['title'],
-            'artist': track['artist']['name'],
+            'artist': track['artist']['title'],
             'album': track['album']['name'],
             'bot': 't.me/deezerhistorybot',
         },
