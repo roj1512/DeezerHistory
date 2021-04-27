@@ -4,11 +4,11 @@ from urllib.parse import urlencode
 from aiogram.types import User
 from http_client import client
 
-from .config import IMAGE_SERVER_PUBLIC_ADDRESS
+from .config import IMAGE_SERVER_ADDRESS
 
 
 async def create_image(track: dict, user: User) -> BytesIO:
-    url = IMAGE_SERVER_PUBLIC_ADDRESS + '?' + urlencode(
+    url = IMAGE_SERVER_ADDRESS + '?' + urlencode(
         {
             'image': track['album']['cover'],
             'user': user.first_name,
