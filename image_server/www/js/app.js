@@ -14,4 +14,5 @@ document.querySelector(".image").style.backgroundImage = image;
 document.querySelector(".user").innerHTML = getQueryString("user");
 document.querySelector(".title").innerHTML = getQueryString("title");
 document.querySelector(".artist").innerHTML = getQueryString("artist");
+document.querySelector(".album").innerHTML = getQueryString("album");
 document.querySelector(".bot").innerHTML = getQueryString("bot");
