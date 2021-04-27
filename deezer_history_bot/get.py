@@ -1,4 +1,5 @@
 import typing
+from io import BytesIO
 from uuid import uuid4
 
 from aiogram import Bot
@@ -11,8 +12,8 @@ from aiogram.types import Message
 from .image import create_image
 
 
-async def photo_file_id_from_url(bot: Bot, url: str) -> str:
-    return (await bot.send_photo(-1001243271409, url)).photo[1].file_id
+async def photo_file_id_from_bytes_io(bot: Bot, bytes_io: BytesIO) -> str:
+    return (await bot.send_photo(-1001243271409, bytes_io)).photo[1].file_id
 
 
 def lt_reply_markup(track: dict):
@@ -49,7 +50,7 @@ async def inline_results(query: InlineQuery, history: typing.List[dict], indent:
     return [
         InlineQueryResultCachedPhoto(
             id=str(uuid4()),
-            photo_file_id=await photo_file_id_from_url(query.bot, await create_image(history[indent], query.from_user)),
+            photo_file_id=await photo_file_id_from_bytes_io(query.bot, await create_image(history[indent], query.from_user)),
             title=history[indent]['title'],
             description=history[indent]['artist']['name'],
             reply_markup=lt_reply_markup(history[indent]),
