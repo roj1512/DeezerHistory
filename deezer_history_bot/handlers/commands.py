@@ -14,10 +14,11 @@ async def handler(message: Message):
 
 <b>Groups</>
 /status - show others what you were listening to, pass a number to show a different track.
+Example usage:
 
 <b>Inline</>
 You can always use me inline to do the same thing /status does but in anywhere and without adding me.
-Just type @DeezerHistoryBot in the message box.
+Type @DeezerHistoryBot in the message box, pass a number to get a different track.
             """,
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
