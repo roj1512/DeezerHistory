@@ -60,9 +60,11 @@ span {
 
 .texts {
   position: absolute;
-  margin-top: 25px !important;
+  top: 50%;
   left: 250px;
+  transform: translateY(-50%);
   width: calc(650px - 250px - 25px);
+  height: 200px;
 }
 
 .user {
