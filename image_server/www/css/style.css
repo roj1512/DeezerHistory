@@ -1,0 +1,88 @@
+@font-face {
+  src: url("../assets/ttf/poppins.regular.ttf");
+  font-family: Poppins;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  user-select: none;
+}
+
+span {
+  display: block;
+}
+
+.bg {
+  position: absolute;
+  width: 750px;
+  height: 350px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-size: cover;
+  filter: blur(100px);
+  -webkit-filter: blur(8px);
+}
+
+.container {
+  position: absolute;
+  width: 650px;
+  height: 250px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.image {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-size: contain;
+  transform: translate(25px, 25px);
+}
+
+.texts {
+  position: absolute;
+  top: 50%;
+  transform: translate(248px, -50%);
+}
+
+.truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.user {
+  font-size: 22.5pt;
+  width: 250px;
+}
+
+.was-listening-to {
+  font-size: 20pt;
+  margin-top: 5px;
+}
+
+.title {
+  font-size: 25pt;
+  width: 350px;
+  margin-top: 5px;
+}
+
+.artist {
+  font-size: 25pt;
+  width: 350px;
+  margin-top: 5px;
+}
+
+.bot {
+  position: absolute;
+  font-size: 10pt;
+  top: 100%;
+  left: 100%;
+  transform: translate(-112.5%, -125%);
+  color: rgba(255, 255, 255, 0.5);
+}

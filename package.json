@@ -1,0 +1,24 @@
+{
+  "name": "image_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "image_server",
+  "scripts": {
+    "start": "node image_server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rojserbest/deezer_history_bot.git"
+  },
+  "author": "Roj Serbest",
+  "license": "LGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/rojserbest/deezer_history_bot/issues"
+  },
+  "homepage": "https://github.com/rojserbest/deezer_history_bot#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "puppeteer-core": "^9.0.0"
+  }
+}
