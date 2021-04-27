@@ -27,4 +27,4 @@ app.get("/image", async (req, res) => {
   } else res.json({ error: "image, user, title, artist and bot are required" });
 });
 
-app.listen(port, "0.0.0.0");
+app.listen(port);
