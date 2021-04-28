@@ -91,12 +91,3 @@ span {
 .album {
   font-size: 18pt;
 }
-
-.bot {
-  position: absolute;
-  font-size: 10pt;
-  top: 100%;
-  left: 100%;
-  transform: translate(-110%, -135%);
-  color: rgba(255, 255, 255, 0.5);
-}
