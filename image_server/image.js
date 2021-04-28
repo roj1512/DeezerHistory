@@ -4,7 +4,7 @@ var browser, page;
 (async () => {
   browser = await core.launch({ executablePath: "/usr/bin/google-chrome" });
   page = await browser.newPage();
-  await page.setViewport({ width: 640, height: 250 });
+  await page.setViewport({ width: 1300, height: 500 });
 })();
 
 const getImage = async (url, image, user, title, artist, album) => {
