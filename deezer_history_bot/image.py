@@ -15,7 +15,6 @@ async def create_image(track: dict, user: User) -> BytesIO:
             'title': track['title'],
             'artist': track['artist']['name'],
             'album': track['album']['title'],
-            'bot': 't.me/deezerhistorybot',
         },
     )
     response = await client.get(url)
