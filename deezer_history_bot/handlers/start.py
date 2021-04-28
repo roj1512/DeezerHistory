@@ -13,7 +13,7 @@ async def handler(message: Message):
                 and message.text.split()[1].startswith('sak')
                 and len(message.text.split()[1][3:].strip().rstrip()) != 0
         ):
-            await set_access(message.from_user.id, message.text.split()[1][3:].strip().rstrip())
+            set_access(message.from_user.id, message.text.split()[1][3:].strip().rstrip())
             await message.reply('Credentials updated!')
         else:
             await message.reply(
