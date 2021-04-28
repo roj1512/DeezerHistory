@@ -48,7 +48,7 @@ span {
   left: 500px;
   height: 400px;
   transform: translateY(-50%);
-  width: calc(650px - 250px - 25px);
+  width: calc(1300px - 500px - 25px);
 }
 
 .texts p {
