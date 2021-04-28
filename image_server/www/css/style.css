@@ -15,8 +15,8 @@
 }
 
 body {
-  width: 650px;
-  height: 250px;
+  width: 1300px;
+  height: 500px;
 }
 
 span {
@@ -28,24 +28,25 @@ span {
   left: 0;
   right: 0;
   display: block;
-  width: 1000px;
-  height: 1000px;
+  width: 2000px;
+  height: 2000px;
+  transform: translate(-50px, -50px);
   background-size: cover;
   z-index: -1;
   filter: blur(25px);
 }
 
 .container {
-  width: 650px;
-  height: 250px;
+  width: 1300px;
+  height: 500px;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 .texts {
   position: absolute;
   top: 50%;
-  left: 250px;
-  height: 200px;
+  left: 500px;
+  height: 400px;
   transform: translateY(-50%);
   width: calc(650px - 250px - 25px);
 }
@@ -59,10 +60,10 @@ span {
 .image {
   background-size: contain;
   position: absolute;
-  top: 25px;
-  left: 25px;
-  width: 200px;
-  height: 200px;
+  top: 50px;
+  left: 50px;
+  width: 400px;
+  height: 400px;
 }
 
 .truncate {
@@ -72,22 +73,22 @@ span {
 }
 
 .user {
-  font-size: 18pt;
+  font-size: 36pt;
 }
 
 .was-listening-to {
-  font-size: 18pt;
+  font-size: 36pt;
   color: #c5c5c5;
 }
 
 .title {
-  font-size: 25pt;
+  font-size: 50pt;
 }
 
 .artist {
-  font-size: 18pt;
+  font-size: 36pt;
 }
 
 .album {
-  font-size: 18pt;
+  font-size: 36pt;
 }
