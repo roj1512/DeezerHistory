@@ -32,7 +32,7 @@ span {
   height: 1000px;
   background-size: cover;
   z-index: -1;
-  filter: blur(50px);
+  filter: blur(25px);
 }
 
 .container {
