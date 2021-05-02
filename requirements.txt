@@ -1,4 +1,0 @@
-aiogram
-httpx
-pymongo
-python-dotenv
