@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/rojserbest/deezer_history_bot/issues"
   },
-  "homepage": "https://github.com/rojserbest/deezer_history_bot#readme",
+  "homepage": "https://github.com/rojserbest/deezer_history_bot",
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
