@@ -12,7 +12,11 @@ export default Composer.on("inline_query", async (ctx) => {
     access = await getAccess(ctx.from.id);
   } catch (err) {
     let text = err.message;
-    if (err.message === "Not authorized") text = "Click here!";
+    if (
+      err.message === "Not authorized" ||
+      err.message === "OAuthException: OAuthException"
+    )
+      text = "Click here!";
     await ctx.answerInlineQuery([], {
       cache_time: 0,
       is_personal: true,

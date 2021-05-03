@@ -13,7 +13,10 @@ export default Composer.command("status", async (ctx) => {
   try {
     access = await getAccess(ctx.from.id);
   } catch (err) {
-    if (err.message === "Not authorized") {
+    if (
+      err.message === "Not authorized" ||
+      err.message === "OAuthException: OAuthException"
+    ) {
       await ctx.reply(
         "You need to connect your Deezer account first. PM me and use the /connect command.",
         {
