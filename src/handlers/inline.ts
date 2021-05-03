@@ -21,7 +21,7 @@ export default Composer.on("inline_query", async (ctx) => {
       cache_time: 0,
       is_personal: true,
       switch_pm_text: text,
-      switch_pm_parameter: "start",
+      switch_pm_parameter: "connect",
     });
   }
   var indent = parseInt(ctx.inlineQuery.query.split(/\s/g)[0]);
