@@ -20,7 +20,7 @@ export default Composer.on("inline_query", async (ctx) => {
       switch_pm_parameter: "start",
     });
   }
-  var indent = parseInt(ctx.inlineQuery.query.split(/\s/g)[1]);
+  var indent = parseInt(ctx.inlineQuery.query.split(/\s/g)[0]);
   const history = await getHistory(await getAccess(ctx.from.id));
   if (!(indent - 1 in history)) indent = 0;
   else indent -= 1;
