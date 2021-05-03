@@ -1,19 +1,24 @@
+import { access } from "fs";
 import path from "path";
 import { encode } from "querystring";
 import core from "puppeteer-core";
 
 var browser: core.Browser;
+var executablePath = "/usr/bin/chromium";
 const url = `file://${path.join(
   path.dirname(__dirname),
   "static",
   "html",
   "index.html"
 )}`;
+access(executablePath, (err) => {
+  if (err) executablePath = "/usr/bin/google-chrome";
+});
 const getBrowser = async (): Promise<core.Browser> => {
   if (typeof browser !== "undefined") return browser;
   browser = await core.launch({
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    executablePath: "/usr/bin/google-chrome",
+    executablePath: executablePath,
     headless: true,
   });
   return browser;
