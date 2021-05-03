@@ -9,32 +9,23 @@ export default Composer.command("status", async (ctx) => {
     await ctx.reply("You should send this in a group!");
     return;
   }
-  var access: string;
-  try {
-    access = await getAccess(ctx.from.id);
-  } catch (err) {
-    if (
-      err.message === "Not authorized" ||
-      err.message === "OAuthException: OAuthException"
-    ) {
-      await ctx.reply(
-        "You need to connect your Deezer account first. PM me and use the /connect command.",
-        {
-          reply_markup: {
-            inline_keyboard: [
-              [
-                {
-                  text: "PM me",
-                  url: `https://t.me/${ctx.botInfo.username}`,
-                },
-              ],
+  const access = await getAccess(ctx.from.id);
+  if (access === "") {
+    await ctx.reply(
+      "You need to connect your Deezer account first. PM me and use the /connect command.",
+      {
+        reply_markup: {
+          inline_keyboard: [
+            [
+              {
+                text: "PM me",
+                url: `https://t.me/${ctx.botInfo.username}`,
+              },
             ],
-          },
-        }
-      );
-      return;
-    }
-    await ctx.reply(err.toString());
+          ],
+        },
+      }
+    );
     return;
   }
   var indent = parseInt(ctx.message.text.split(/\s/g)[1]);

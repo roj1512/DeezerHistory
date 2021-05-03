@@ -4,6 +4,7 @@ import status from "./status";
 import commands from "./commands";
 import connect from "./connect";
 import inline from "./inline";
+import error from "./error";
 
 export default (bot: Telegraf): void => {
   bot.use(start);
@@ -11,4 +12,5 @@ export default (bot: Telegraf): void => {
   bot.use(commands);
   bot.use(connect);
   bot.use(inline);
+  bot.use(error);
 };

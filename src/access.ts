@@ -8,7 +8,7 @@ const client = new mongodb.MongoClient(dbUri, {
 var access: mongodb.Collection;
 export const getAccess = async (userId: number): Promise<string> => {
   const find = await access.findOne({ user_id: userId });
-  if (!find) throw new Error("Not authorized");
+  if (!find) return "";
   else return find["access"];
 };
 export const setAccess = async (

@@ -7,22 +7,15 @@ import { getReplyMarkup } from "../helpers";
 import { cacheChatId } from "../config";
 
 export default Composer.on("inline_query", async (ctx) => {
-  var access: string;
-  try {
-    access = await getAccess(ctx.from.id);
-  } catch (err) {
-    let text = err.message;
-    if (
-      err.message === "Not authorized" ||
-      err.message === "OAuthException: OAuthException"
-    )
-      text = "Click here!";
+  const access = await getAccess(ctx.from.id);
+  if (access === "") {
     await ctx.answerInlineQuery([], {
       cache_time: 0,
       is_personal: true,
-      switch_pm_text: text,
-      switch_pm_parameter: "connect",
+      switch_pm_text: "Click here!",
+      switch_pm_parameter: "start",
     });
+    return;
   }
   var indent = parseInt(ctx.inlineQuery.query.split(/\s/g)[0]);
   const history = await getHistory(access);

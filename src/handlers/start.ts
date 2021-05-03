@@ -12,15 +12,6 @@ export default Composer.command("start", async (ctx) => {
       await setAccess(ctx.from.id, args[1].slice(3, args[1].length));
       await ctx.reply("Credentials updated!");
       return;
-    } else if (args.length == 2 && args[1] == "connect") {
-      await ctx.reply(
-        `1. Login to your Deezer account in your browser if you haven’t, otherwise move to the next step.
-2. Visit https://tgcalls.net/deezer.
-3. Click “Continue”, after that “Accept”.
-4. That should return you to Telegram, once you’re there click “Start”.
-5. Done, you now can use my /commands!`
-      );
-      return;
     }
     await ctx.reply(
       `I can let others know what you were listening to on Deezer.
