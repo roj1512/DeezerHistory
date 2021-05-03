@@ -1,4 +1,4 @@
-# Deezer History Bot — Tell others what you were lisening to on Deezer
+# Deezer History — Tell others what you were lisening to on Deezer
 
 ### Publicly hosted as [@DeezerHistoryBot](https://t.me/DeezerHistoryBot).
 
