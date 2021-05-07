@@ -1,4 +1,4 @@
-import { Composer } from "grammy";
+import { Composer, InputFile } from "grammy";
 import { v4 } from "uuid";
 import { getHistory } from "../history";
 import { getAccess } from "../access";
@@ -25,15 +25,18 @@ composer.on("inline_query", async (ctx) => {
   else indent -= 1;
   const track = history[indent];
   const photo = (
-    await ctx.api.sendPhoto(cacheChatId, {
-      file: await getImage(
-        track.album.cover_big,
-        ctx.from.first_name,
-        track.title,
-        track.artist.name,
-        track.album.title
-      ),
-    })
+    await ctx.api.sendPhoto(
+      cacheChatId,
+      new InputFile(
+        await getImage(
+          track.album.cover_big,
+          ctx.from.first_name,
+          track.title,
+          track.artist.name,
+          track.album.title
+        )
+      )
+    )
   ).photo;
   const file_id = photo[photo.length - 1].file_id;
   await ctx.answerInlineQuery(
