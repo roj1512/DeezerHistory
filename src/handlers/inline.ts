@@ -1,4 +1,4 @@
-import { Composer } from "telegraf";
+import { Composer } from "grammy";
 import { v4 } from "uuid";
 import { getHistory } from "../history";
 import { getAccess } from "../access";
@@ -6,7 +6,7 @@ import { getImage } from "../image";
 import { getReplyMarkup } from "../helpers";
 import { cacheChatId } from "../config";
 
-export default Composer.on("inline_query", async (ctx) => {
+export default new Composer().on("inline_query", async (ctx) => {
   const access = await getAccess(ctx.from.id);
   if (access === "") {
     await ctx.answerInlineQuery([], {
@@ -23,8 +23,8 @@ export default Composer.on("inline_query", async (ctx) => {
   else indent -= 1;
   const track = history[indent];
   const photo = (
-    await ctx.telegram.sendPhoto(cacheChatId, {
-      source: await getImage(
+    await ctx.api.sendPhoto(cacheChatId, {
+      file: await getImage(
         track.album.cover_big,
         ctx.from.first_name,
         track.title,

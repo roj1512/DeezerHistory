@@ -1,10 +1,8 @@
-import { Telegraf } from "telegraf";
+import { Bot } from "grammy";
 import addHandlers from "./handlers";
 import { botToken } from "./config";
 
-const bot = new Telegraf(botToken);
+const bot = new Bot(botToken);
 addHandlers(bot);
-bot.catch((error) => console.log(error));
-(async () => {
-  await bot.launch({ dropPendingUpdates: true });
-})();
+bot.catch((botError) => console.log(botError.error));
+bot.start({ drop_pending_updates: true });

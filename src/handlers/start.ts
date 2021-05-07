@@ -1,15 +1,15 @@
-import { Composer, Markup } from "telegraf";
+import { Composer } from "grammy";
 import { setAccess } from "../access";
 
-export default Composer.command("start", async (ctx) => {
+export default new Composer().command("start", async (ctx) => {
   if (ctx.chat.type == "private") {
-    const args = ctx.message.text.split(/\s/g);
+    const args = ctx.message?.text.split(/\s/g);
     if (
       args.length == 2 &&
       args[1].startsWith("sak") &&
       args[1].slice(3, args[1].length).length != 0
     ) {
-      await setAccess(ctx.from.id, args[1].slice(3, args[1].length));
+      await setAccess(ctx.from?.id, args[1].slice(3, args[1].length));
       await ctx.reply("Credentials updated!");
       return;
     }
@@ -20,7 +20,7 @@ Use /connect for steps on connecting your account or /commands to know my comman
       {
         reply_markup: {
           inline_keyboard: [
-            [Markup.button.switchToChat("Use me inline", "")],
+            [{ text: "Use me inline", switch_inline_query: "" }],
             [
               {
                 text: "Add me to a group",

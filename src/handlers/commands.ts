@@ -1,6 +1,6 @@
-import { Composer } from "telegraf";
+import { Composer } from "grammy";
 
-export default Composer.command("commands", async (ctx) => {
+export default new Composer().command("commands", async (ctx) => {
   if (ctx.chat.type != "private") return;
   await ctx.reply(
     `<b>Private</>

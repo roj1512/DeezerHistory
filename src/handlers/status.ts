@@ -1,15 +1,15 @@
-import { Composer } from "telegraf";
+import { Composer } from "grammy";
 import { getHistory } from "../history";
 import { getAccess } from "../access";
 import { getImage } from "../image";
 import { getReplyMarkup } from "../helpers";
 
-export default Composer.command("status", async (ctx) => {
+export default new Composer().command("status", async (ctx) => {
   if (ctx.chat.type == "private") {
     await ctx.reply("You should send this in a group!");
     return;
   }
-  const access = await getAccess(ctx.from.id);
+  const access = await getAccess(ctx.from?.id);
   if (access === "") {
     await ctx.reply(
       "You need to connect your Deezer account first. PM me and use the /connect command.",
@@ -35,9 +35,9 @@ export default Composer.command("status", async (ctx) => {
   const track = history[indent];
   await ctx.replyWithPhoto(
     {
-      source: await getImage(
+      file: await getImage(
         track.album.cover_big,
-        ctx.from.first_name,
+        ctx.from?.first_name,
         track.title,
         track.artist.name,
         track.album.title
