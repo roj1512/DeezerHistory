@@ -6,7 +6,9 @@ import { getImage } from "../image";
 import { getReplyMarkup } from "../helpers";
 import { cacheChatId } from "../config";
 
-export default new Composer().on("inline_query", async (ctx) => {
+const composer = new Composer();
+
+composer.on("inline_query", async (ctx) => {
   const access = await getAccess(ctx.from.id);
   if (access === "") {
     await ctx.answerInlineQuery([], {
@@ -48,3 +50,5 @@ export default new Composer().on("inline_query", async (ctx) => {
     { cache_time: 0, is_personal: true }
   );
 });
+
+export default composer;

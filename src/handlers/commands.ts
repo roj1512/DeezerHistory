@@ -1,6 +1,8 @@
 import { Composer } from "grammy";
 
-export default new Composer().command("commands", async (ctx) => {
+const composer = new Composer();
+
+composer.command("commands", async (ctx) => {
   if (ctx.chat.type != "private") return;
   await ctx.reply(
     `<b>Private</>
@@ -17,3 +19,5 @@ Type @DeezerHistoryBot in the message box, pass a number to get a different trac
     { parse_mode: "HTML" }
   );
 });
+
+export default composer;

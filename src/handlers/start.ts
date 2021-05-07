@@ -1,7 +1,9 @@
 import { Composer } from "grammy";
 import { setAccess } from "../access";
 
-export default new Composer().command("start", async (ctx) => {
+const composer = new Composer();
+
+composer.command("start", async (ctx) => {
   if (ctx.chat?.type == "private" && ctx.from) {
     const args = ctx.message?.text.split(/\s/g);
     if (
@@ -33,3 +35,5 @@ Use /connect for steps on connecting your account or /commands to know my comman
     );
   } else await ctx.reply("I’m on the go.");
 });
+
+export default composer;

@@ -4,7 +4,9 @@ import { getAccess } from "../access";
 import { getImage } from "../image";
 import { getReplyMarkup } from "../helpers";
 
-export default new Composer().command("status", async (ctx) => {
+const composer = new Composer();
+
+composer.command("status", async (ctx) => {
   if (ctx.chat.type == "private" || !ctx.from || !ctx.message) {
     await ctx.reply("You should send this in a group!");
     return;
@@ -46,3 +48,5 @@ export default new Composer().command("status", async (ctx) => {
     { reply_markup: getReplyMarkup(track) }
   );
 });
+
+export default composer;
