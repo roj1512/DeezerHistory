@@ -1,4 +1,4 @@
-import { Composer, InputFile } from "grammy";
+import { Composer, InputFile, InlineKeyboard } from "grammy";
 import { getHistory } from "../history";
 import { getAccess } from "../access";
 import { getImage } from "../image";
@@ -16,16 +16,10 @@ composer.command("status", async (ctx) => {
     await ctx.reply(
       "You need to connect your Deezer account first. PM me and use the /connect command.",
       {
-        reply_markup: {
-          inline_keyboard: [
-            [
-              {
-                text: "PM me",
-                url: `https://t.me/${ctx.me.username}`,
-              },
-            ],
-          ],
-        },
+        reply_markup: new InlineKeyboard().url(
+          "PM me",
+          `https://t.me/${ctx.me.username}`
+        ),
       }
     );
     return;
