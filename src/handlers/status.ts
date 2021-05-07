@@ -1,4 +1,4 @@
-import { Composer } from "grammy";
+import { Composer, InputFile } from "grammy";
 import { getHistory } from "../history";
 import { getAccess } from "../access";
 import { getImage } from "../image";
@@ -36,15 +36,15 @@ composer.command("status", async (ctx) => {
   else indent -= 1;
   const track = history[indent];
   await ctx.replyWithPhoto(
-    {
-      file: await getImage(
+    new InputFile(
+      await getImage(
         track.album.cover_big,
         ctx.from.first_name,
         track.title,
         track.artist.name,
         track.album.title
-      ),
-    },
+      )
+    ),
     { reply_markup: getReplyMarkup(track) }
   );
 });
