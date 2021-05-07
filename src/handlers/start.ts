@@ -1,4 +1,4 @@
-import { Composer } from "grammy";
+import { Composer, InlineKeyboard } from "grammy";
 import { setAccess } from "../access";
 
 const composer = new Composer();
@@ -20,17 +20,13 @@ composer.command("start", async (ctx) => {
 
 Use /connect for steps on connecting your account or /commands to know my commands.`,
       {
-        reply_markup: {
-          inline_keyboard: [
-            [{ text: "Use me inline", switch_inline_query: "" }],
-            [
-              {
-                text: "Add me to a group",
-                url: `https://t.me/${ctx.me.username}?startgroup=start`,
-              },
-            ],
-          ],
-        },
+        reply_markup: new InlineKeyboard()
+          .switchInline("Use me inline")
+          .row()
+          .url(
+            "Add me to a group",
+            `https://t.me/${ctx.me.username}?startgroup=start`
+          ),
       }
     );
   } else await ctx.reply("I’m on the go.");
