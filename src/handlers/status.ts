@@ -5,11 +5,11 @@ import { getImage } from "../image";
 import { getReplyMarkup } from "../helpers";
 
 export default new Composer().command("status", async (ctx) => {
-  if (ctx.chat.type == "private") {
+  if (ctx.chat.type == "private" || !ctx.from || !ctx.message) {
     await ctx.reply("You should send this in a group!");
     return;
   }
-  const access = await getAccess(ctx.from?.id);
+  const access = await getAccess(ctx.from.id);
   if (access === "") {
     await ctx.reply(
       "You need to connect your Deezer account first. PM me and use the /connect command.",
@@ -19,7 +19,7 @@ export default new Composer().command("status", async (ctx) => {
             [
               {
                 text: "PM me",
-                url: `https://t.me/${ctx.botInfo.username}`,
+                url: `https://t.me/${ctx.me.username}`,
               },
             ],
           ],
@@ -37,7 +37,7 @@ export default new Composer().command("status", async (ctx) => {
     {
       file: await getImage(
         track.album.cover_big,
-        ctx.from?.first_name,
+        ctx.from.first_name,
         track.title,
         track.artist.name,
         track.album.title

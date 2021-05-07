@@ -2,14 +2,14 @@ import { Composer } from "grammy";
 import { setAccess } from "../access";
 
 export default new Composer().command("start", async (ctx) => {
-  if (ctx.chat.type == "private") {
+  if (ctx.chat?.type == "private" && ctx.from) {
     const args = ctx.message?.text.split(/\s/g);
     if (
       args.length == 2 &&
       args[1].startsWith("sak") &&
       args[1].slice(3, args[1].length).length != 0
     ) {
-      await setAccess(ctx.from?.id, args[1].slice(3, args[1].length));
+      await setAccess(ctx.from.id, args[1].slice(3, args[1].length));
       await ctx.reply("Credentials updated!");
       return;
     }
