@@ -1,4 +1,4 @@
-import { Composer } from "telegraf";
+import { Composer, InputFile } from "grammy";
 import { v4 } from "uuid";
 import { getHistory } from "../history";
 import { getAccess } from "../access";
@@ -6,7 +6,9 @@ import { getImage } from "../image";
 import { getReplyMarkup } from "../helpers";
 import { cacheChatId } from "../config";
 
-export default Composer.on("inline_query", async (ctx) => {
+const composer = new Composer();
+
+composer.on("inline_query", async (ctx) => {
   const access = await getAccess(ctx.from.id);
   if (access === "") {
     await ctx.answerInlineQuery([], {
@@ -23,15 +25,18 @@ export default Composer.on("inline_query", async (ctx) => {
   else indent -= 1;
   const track = history[indent];
   const photo = (
-    await ctx.telegram.sendPhoto(cacheChatId, {
-      source: await getImage(
-        track.album.cover_big,
-        ctx.from.first_name,
-        track.title,
-        track.artist.name,
-        track.album.title
-      ),
-    })
+    await ctx.api.sendPhoto(
+      cacheChatId,
+      new InputFile(
+        await getImage(
+          track.album.cover_big,
+          ctx.from.first_name,
+          track.title,
+          track.artist.name,
+          track.album.title
+        )
+      )
+    )
   ).photo;
   const file_id = photo[photo.length - 1].file_id;
   await ctx.answerInlineQuery(
@@ -48,3 +53,5 @@ export default Composer.on("inline_query", async (ctx) => {
     { cache_time: 0, is_personal: true }
   );
 });
+
+export default composer;

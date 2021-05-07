@@ -1,6 +1,8 @@
-import { Composer } from "telegraf";
+import { Composer } from "grammy";
 
-export default Composer.command("connect", async (ctx) => {
+const composer = new Composer();
+
+composer.command("connect", async (ctx) => {
   if (ctx.chat.type != "private") return;
   await ctx.reply(
     `1. Login to your Deezer account in your browser if you haven’t, otherwise move to the next step.
@@ -10,3 +12,5 @@ export default Composer.command("connect", async (ctx) => {
 5. Done, you now can use my /commands!`
   );
 });
+
+export default composer;

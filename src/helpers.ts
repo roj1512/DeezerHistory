@@ -1,4 +1,4 @@
-import { InlineKeyboardMarkup } from "typegram";
+import { InlineKeyboardMarkup } from "@grammyjs/types";
 
 export interface track {
   [key: string]: any;

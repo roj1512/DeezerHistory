@@ -1,9 +1,11 @@
-import { Composer, Markup } from "telegraf";
+import { Composer } from "grammy";
 import { setAccess } from "../access";
 
-export default Composer.command("start", async (ctx) => {
-  if (ctx.chat.type == "private") {
-    const args = ctx.message.text.split(/\s/g);
+const composer = new Composer();
+
+composer.command("start", async (ctx) => {
+  if (ctx.chat?.type == "private" && ctx.from) {
+    const args = ctx.message?.text.split(/\s/g);
     if (
       args.length == 2 &&
       args[1].startsWith("sak") &&
@@ -20,11 +22,11 @@ Use /connect for steps on connecting your account or /commands to know my comman
       {
         reply_markup: {
           inline_keyboard: [
-            [Markup.button.switchToChat("Use me inline", "")],
+            [{ text: "Use me inline", switch_inline_query: "" }],
             [
               {
                 text: "Add me to a group",
-                url: `https://t.me/${ctx.botInfo.username}?startgroup=start`,
+                url: `https://t.me/${ctx.me.username}?startgroup=start`,
               },
             ],
           ],
@@ -33,3 +35,5 @@ Use /connect for steps on connecting your account or /commands to know my comman
     );
   } else await ctx.reply("I’m on the go.");
 });
+
+export default composer;

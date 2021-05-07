@@ -1,11 +1,13 @@
-import { Composer } from "telegraf";
+import { Composer, InputFile } from "grammy";
 import { getHistory } from "../history";
 import { getAccess } from "../access";
 import { getImage } from "../image";
 import { getReplyMarkup } from "../helpers";
 
-export default Composer.command("status", async (ctx) => {
-  if (ctx.chat.type == "private") {
+const composer = new Composer();
+
+composer.command("status", async (ctx) => {
+  if (ctx.chat.type == "private" || !ctx.from || !ctx.message) {
     await ctx.reply("You should send this in a group!");
     return;
   }
@@ -19,7 +21,7 @@ export default Composer.command("status", async (ctx) => {
             [
               {
                 text: "PM me",
-                url: `https://t.me/${ctx.botInfo.username}`,
+                url: `https://t.me/${ctx.me.username}`,
               },
             ],
           ],
@@ -34,15 +36,17 @@ export default Composer.command("status", async (ctx) => {
   else indent -= 1;
   const track = history[indent];
   await ctx.replyWithPhoto(
-    {
-      source: await getImage(
+    new InputFile(
+      await getImage(
         track.album.cover_big,
         ctx.from.first_name,
         track.title,
         track.artist.name,
         track.album.title
-      ),
-    },
+      )
+    ),
     { reply_markup: getReplyMarkup(track) }
   );
 });
+
+export default composer;
