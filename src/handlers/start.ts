@@ -24,7 +24,7 @@ Use /connect for steps on connecting your account or /commands to know my comman
             [
               {
                 text: "Add me to a group",
-                url: `https://t.me/${ctx.botInfo.username}?startgroup=start`,
+                url: `https://t.me/${ctx.me.username}?startgroup=start`,
               },
             ],
           ],
