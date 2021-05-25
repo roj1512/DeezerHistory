@@ -6,9 +6,9 @@ import connect from "./connect";
 import inline from "./inline";
 
 export default (bot: Bot): void => {
-  bot.use(start);
-  bot.use(status);
-  bot.use(commands);
-  bot.use(connect);
-  bot.use(inline);
+    bot.use(start);
+    bot.use(status);
+    bot.use(commands);
+    bot.use(connect);
+    bot.use(inline);
 };

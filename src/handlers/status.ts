@@ -7,40 +7,40 @@ import { getReplyMarkup } from "../helpers";
 const composer = new Composer();
 
 composer.command("status", async (ctx) => {
-  if (ctx.chat.type == "private" || !ctx.from || !ctx.message) {
-    await ctx.reply("You should send this in a group!");
-    return;
-  }
-  const access = await getAccess(ctx.from.id);
-  if (access === "") {
-    await ctx.reply(
-      "You need to connect your Deezer account first. PM me and use the /connect command.",
-      {
-        reply_markup: new InlineKeyboard().url(
-          "PM me",
-          `https://t.me/${ctx.me.username}`
+    if (ctx.chat.type == "private" || !ctx.from || !ctx.message) {
+        await ctx.reply("You should send this in a group!");
+        return;
+    }
+    const access = await getAccess(ctx.from.id);
+    if (access === "") {
+        await ctx.reply(
+            "You need to connect your Deezer account first. PM me and use the /connect command.",
+            {
+                reply_markup: new InlineKeyboard().url(
+                    "PM me",
+                    `https://t.me/${ctx.me.username}`
+                ),
+            }
+        );
+        return;
+    }
+    var indent = parseInt(ctx.message.text.split(/\s/g)[1]);
+    const history = await getHistory(access);
+    if (!(indent - 1 in history)) indent = 0;
+    else indent -= 1;
+    const track = history[indent];
+    await ctx.replyWithPhoto(
+        new InputFile(
+            await getImage(
+                track.album.cover_big,
+                ctx.from.first_name,
+                track.title,
+                track.artist.name,
+                track.album.title
+            )
         ),
-      }
+        { reply_markup: getReplyMarkup(track) }
     );
-    return;
-  }
-  var indent = parseInt(ctx.message.text.split(/\s/g)[1]);
-  const history = await getHistory(access);
-  if (!(indent - 1 in history)) indent = 0;
-  else indent -= 1;
-  const track = history[indent];
-  await ctx.replyWithPhoto(
-    new InputFile(
-      await getImage(
-        track.album.cover_big,
-        ctx.from.first_name,
-        track.title,
-        track.artist.name,
-        track.album.title
-      )
-    ),
-    { reply_markup: getReplyMarkup(track) }
-  );
 });
 
 export default composer;
