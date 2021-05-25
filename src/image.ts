@@ -13,11 +13,13 @@ const url = `file://${path.join(
 )}`;
 
 access(executablePath, (err) => {
-    if (err) executablePath = "/usr/bin/google-chrome";
-});
+    if (err) {
+        executablePath = "/usr/bin/google-chrome";
 
-access(executablePath, (err) => {
-    if (err) executablePath = undefined;
+        access(executablePath, (err) => {
+            if (err) executablePath = undefined;
+        });
+    }
 });
 
 const getBrowser = async (): Promise<core.Browser> => {
