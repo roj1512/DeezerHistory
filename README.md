@@ -4,19 +4,7 @@
 
 #### Caching in a chat, sending `InlineQueryResultCachedPhoto` and the generated graphics are inspirations from [@NeelPlaysAC](https://github.com/NeelPlaysAC)’s [spotipie-bot](https://github.com/NeelPlaysAC/spotipie-bot).
 
-## Requirements
-
-- Node.JS
-- Google Chrome/Chromium browser
-- A MongoDB
-
 ## Running
-
-1. Install Typescript:
-
-```bash
-npm install typescript
-```
 
 2. Build:
 
@@ -32,11 +20,11 @@ cp example.env .env
 
 4. Add your credentials:
 
-`BOT_TOKEN` > A bot token from [@BotFather](https://t.me/BotFather).
+`TOKEN` > A bot token from [@BotFather](https://t.me/BotFather).
 
-`DB_URI` > A MongoDB URI.
+`MONGO` > A Mongo DB URI.
 
-`CACHE_CHAT_ID` > ID of a chat where the bot can send photos to cache them for inline results.
+`CACHE` > ID of a chat where the bot can send photos to cache them for inline results.
 
 5. Install PM2:
 
