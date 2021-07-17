@@ -4,7 +4,7 @@ $code = $_GET["code"];
 if (!isset($code)) {
     header(
         "Location: "
-        . "https://tgcalls.net/deezer/auth"
+        . "$REDIR_URL/auth"
     );
     exit();
 }

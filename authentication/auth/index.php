@@ -7,7 +7,7 @@ if (empty($code)) {
 	$dialog_url = "https://connect.deezer.com/oauth/auth.php?app_id="
 	    . $ID
 		. "&redirect_uri="
-		. urlencode($REDIR_URI)
+		. urlencode($REDIR_URL)
 		. "&perms=$PERMISSIONS"
 		. "&state="
 		. $_SESSION['state'];
