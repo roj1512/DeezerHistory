@@ -20,7 +20,7 @@ const schema = new Schema<IAccess>({
 const Access = model("access", schema);
 
 export const setAccess = (userId: number, access: string) =>
-    new Access({ userId, access }).save();
+    Access.updateOne({}, { userId, access }, { upsert: true });
 
 export const getAccess = async (userId: number) => {
     const r = await Access.findOne({ userId }).exec();
