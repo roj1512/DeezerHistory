@@ -3,11 +3,12 @@ import { getHistory } from "../../history";
 import { getAccess } from "../../models/access";
 import generateImage from "../../image";
 import { getReplyMarkup } from "../../helpers";
+import env from "../../env";
 
 const composer = new Composer();
 
-composer.command("status", async (ctx) => {
-    if (!ctx.from) {
+composer.hears(new RegExp(`status(|@${env.USERNAME})`), async (ctx) => {
+    if (!ctx.from || !ctx.message.text) {
         return;
     }
 

@@ -5,6 +5,7 @@ config();
 
 export default cleanEnv(process.env, {
     TOKEN: str(),
+    USERNAME: str(),
     CACHE: num(),
     CONNECT: str(),
     MONGO: str({ default: "mongodb://localhost:27017/deezer" }),
