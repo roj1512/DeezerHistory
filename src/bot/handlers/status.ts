@@ -7,7 +7,7 @@ import env from "../../env";
 
 const composer = new Composer();
 
-composer.hears(new RegExp(`status(|@${env.USERNAME})`), async (ctx) => {
+composer.hears(new RegExp(`status(|@${env.USERNAME})`, "i"), async (ctx) => {
     if (!ctx.from || !ctx.message.text) {
         return;
     }
