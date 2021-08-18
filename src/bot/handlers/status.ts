@@ -29,7 +29,7 @@ composer.hears(
             return;
         }
 
-        var indent = parseInt(ctx.message.text.split(/\s/g)[1]);
+        var indent = Number(ctx.message.text.split(/\s/)[1]);
         const history = await getHistory(access);
 
         if (!(indent - 1 in history)) indent = 0;
