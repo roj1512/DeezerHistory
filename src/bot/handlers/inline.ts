@@ -16,7 +16,7 @@ composer.on("inline_query", async (ctx) => {
             cache_time: 0,
             is_personal: true,
             switch_pm_text: "Click here!",
-            switch_pm_parameter: "start",
+            switch_pm_parameter: "connect",
         });
         return;
     }
