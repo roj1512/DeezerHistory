@@ -1,6 +1,6 @@
-# Deezer History — Tell others what you were lisening to on Deezer
+# Deezer History [![Mentioned in Awesome grammY](https://awesome.re/mentioned-badge.svg)](https://github.com/grammyjs/awesome-grammY)
 
-### Publicly hosted as [@DeezerHistoryBot](https://t.me/DeezerHistoryBot).
+Tell others what you were lisening to on Deezer. Publicly hosted as [@DeezerHistoryBot](https://t.me/DeezerHistoryBot).
 
 #### Caching in a chat, sending `InlineQueryResultCachedPhoto` and the generated graphics are inspirations from [@NeelPlaysAC](https://github.com/NeelPlaysAC)’s [spotipie-bot](https://github.com/NeelPlaysAC/spotipie-bot).
 
