@@ -1,10 +1,10 @@
-import { Composer } from "grammy";
-import env from "../../env";
+import { Composer } from "https://deno.land/x/grammy/mod.ts";
+import env from "../env.ts";
 
 const composer = new Composer();
 
 const connectMessage = `1. Login to your Deezer account in your browser if you haven’t, otherwise move to the next step.
-2. Visit ${env.CONNECT}.
+2. Visit ${env.CONNECTION_URL}.
 3. Click “Continue”, after that “Accept”.
 4. That should return you to Telegram, once you’re there click “Start”.
 5. Done, you now can use my /commands!`;
@@ -12,7 +12,7 @@ const connectMessage = `1. Login to your Deezer account in your browser if you h
 composer.command("connect", (ctx) => ctx.reply(connectMessage));
 
 composer
-    .filter((ctx) => Boolean(ctx.message?.text?.includes("start connect")))
-    .use((ctx) => ctx.reply(connectMessage));
+  .filter((ctx) => Boolean(ctx.message?.text?.includes("start connect")))
+  .use((ctx) => ctx.reply(connectMessage));
 
 export default composer;

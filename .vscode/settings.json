@@ -1,5 +1,8 @@
 {
-    "prettier.tabWidth": 4,
-    "prettier.singleQuote": false,
-    "prettier.trailingComma": "all"
+  "deno.enable": true,
+  "deno.lint": true,
+  "deno.unstable": true,
+  "deno.suggest.imports.hosts": {
+    "https://deno.land": true
+  }
 }

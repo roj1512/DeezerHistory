@@ -6,36 +6,17 @@ Tell others what you were lisening to on Deezer. Publicly hosted as [@DeezerHist
 
 ## Running
 
-2. Build:
-
-```bash
-npm run build
-```
-
-3. Copy example.env to .env:
+1. Copy example.env to .env:
 
 ```bash
 cp example.env .env
 ```
 
-4. Add your credentials:
+2. Add your credentials.
 
-`TOKEN` > A bot token from [@BotFather](https://t.me/BotFather).
-
-`MONGO` > A Mongo DB URI.
-
-`CACHE` > ID of a chat where the bot can send photos to cache them for inline results.
-
-5. Install PM2:
-
+3. Start the bot:
 ```bash
-npm install pm2
-```
-
-6. Start the bot:
-
-```bash
-pm2 start dist --name deezer-history
+deno run --unstable --allow-net --allow-write --allow-read mod.ts
 ```
 
 ## License
