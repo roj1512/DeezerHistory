@@ -10,7 +10,6 @@ composer.command("commands", (ctx) =>
 
 <b>Groups</>
 /status - show others what you were listening to, pass a number to show a different track.
-Example usage:
 
 <b>Inline</>
 You can always use me inline to do the same thing /status does but in anywhere and without adding me.
