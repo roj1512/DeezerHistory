@@ -44,3 +44,5 @@ router.get("/auth", (ctx) => {
     `https://connect.deezer.com/oauth/auth.php?app_id=${env.APP_ID}&redirect_uri=${env.APP_REDIR_URL}&perms=${env.APP_PERMISSIONS}&state=${state}`,
   );
 });
+
+app.use(router);
