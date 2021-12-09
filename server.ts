@@ -22,9 +22,9 @@ router.get("/", async (ctx) => {
     return;
   }
 
-  const { access_token: accessToken } = await (await fetch(
+  const accessToken = (await (await fetch(
     `https://connect.deezer.com/oauth/access_token.php?app_id=${env.APP_ID}&secret=${env.APP_SECRET}&code=${code}`,
-  )).json();
+  )).text()).split("&")[0].replace("access_token=", "");
 
   ctx.response.redirect(
     `https://t.me/${env.BOT_USERNAME}?start=sak${accessToken}`,
