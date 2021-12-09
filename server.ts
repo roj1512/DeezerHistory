@@ -29,7 +29,8 @@ router.get("/", async (ctx) => {
   ctx.response.redirect(
     `https://t.me/${env.BOT_USERNAME}?start=sak${accessToken}`,
   );
-});.routes()
+});
+
 router.get("/auth", (ctx) => {
   const { code } = getQuery(ctx);
 
