@@ -23,7 +23,7 @@ router.get("/", async (ctx) => {
   }
 
   const { access_token: accessToken } = await (await fetch(
-    `https://connect.deezer.com/oauth/access_token.php?app_id=${env.APP_ID}&secret=${env.APP_SECRET}&code=${code}}`,
+    `https://connect.deezer.com/oauth/access_token.php?app_id=${env.APP_ID}&secret=${env.APP_SECRET}&code=${code}`,
   )).json();
 
   ctx.response.redirect(
