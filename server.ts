@@ -32,12 +32,6 @@ router.get("/", async (ctx) => {
 });
 
 router.get("/auth", (ctx) => {
-  const { code } = getQuery(ctx);
-
-  if (!code) {
-    return;
-  }
-
   const state = crypto.randomUUID();
 
   ctx.response.redirect(
