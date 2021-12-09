@@ -2,11 +2,7 @@ import { Application, Router } from "https://deno.land/x/oak@v10.0.0/mod.ts";
 import { getQuery } from "https://deno.land/x/oak@v10.0.0/helpers.ts";
 import env from "./env.ts";
 
-interface State {
-  identifier: string;
-}
-
-const app = new Application();
+export const app = new Application();
 
 app.use(async (ctx, next) => {
   try {
@@ -16,7 +12,7 @@ app.use(async (ctx, next) => {
   }
 });
 
-const router = new Router<State>();
+const router = new Router();
 
 router.get("/", async (ctx) => {
   const { code } = getQuery(ctx);
@@ -26,12 +22,12 @@ router.get("/", async (ctx) => {
     return;
   }
 
-  const { access_token } = await (await fetch(
+  const { access_token: accessToken } = await (await fetch(
     `https://connect.deezer.com/oauth/access_token.php?app_id=${env.APP_ID}&secret=${env.APP_SECRET}&code=${code}}`,
   )).json();
 
   ctx.response.redirect(
-    `https://t.me/${env.BOT_USERNAME}?start=sak${access_token}`,
+    `https://t.me/${env.BOT_USERNAME}?start=sak${accessToken}`,
   );
 });
 
@@ -48,5 +44,3 @@ router.get("/auth", (ctx) => {
     `https://connect.deezer.com/oauth/auth.php?app_id=${env.APP_ID}&redirect_uri=${env.APP_REDIR_URL}&perms=${env.APP_PERMISSIONS}&state=${state}`,
   );
 });
-
-export const startServer = () => app.listen({ port: 3000 });
