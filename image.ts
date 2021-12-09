@@ -11,7 +11,7 @@ export async function generate(
   user: string,
   title: string,
   artist: string,
-  album: string
+  album: string,
 ) {
   const browser = await puppeteer.launch({
     executablePath: env.CHROMIUM_PATH,
@@ -22,14 +22,7 @@ export async function generate(
 
   await page.setViewport({ width: 1300, height: 500 });
 
-  const params = new URLSearchParams();
-
-  params.set("image", image);
-  params.set("user", user);
-  params.set("title", title);
-  params.set("artist", artist);
-  params.set("album", album);
-
+  const params = new URLSearchParams({ image, user, title, artist, album });
   const url = baseURL + "?" + params.toString();
 
   await page.goto(url);
