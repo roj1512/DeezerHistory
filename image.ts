@@ -1,4 +1,4 @@
-import * as path from "https://deno.land/std@0.110.0/path/mod.ts";
+import * as path from "https://deno.land/std@0.121.0/path/mod.ts";
 import puppeteer from "https://deno.land/x/puppeteer@9.0.2/mod.ts";
 import env from "./env.ts";
 
