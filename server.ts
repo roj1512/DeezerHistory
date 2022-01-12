@@ -1,5 +1,5 @@
-import { Application, Router } from "https://deno.land/x/oak@v10.0.0/mod.ts";
-import { getQuery } from "https://deno.land/x/oak@v10.0.0/helpers.ts";
+import { Application, Router } from "https://deno.land/x/oak@v10.1.0/mod.ts";
+import { getQuery } from "https://deno.land/x/oak@v10.1.0/helpers.ts";
 import env from "./env.ts";
 
 export const app = new Application();
