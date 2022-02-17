@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*::before,
+*,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  color: #ffffff;
+  font-family: Poppins, sans-serif;
+}
+
+main {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 500px;
+  width: 1300px;
+  padding: 50px;
+}
+
+section {
+  display: flex;
+  height: 100%;
+}
+
+img {
+  height: 100%;
+}
+
+#texts-container {
+  display: flex;
+  min-width: 0;
+  padding-left: 25px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+p {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+span {
+  font-weight: 700;
+}
+
+i {
+  font-style: normal;
+  opacity: 0.75;
+}
+
+#artist::before {
+  content: "by ";
+  opacity: 0.75;
+}
+
+#album::before {
+  content: "on ";
+  opacity: 0.75;
+}
+
+#back {
+  filter: blur(25px);
+  height: 600px;
+  position: absolute;
+  transform: translate(-50px, -50px);
+  width: 1400px;
+  z-index: -2;
+}
