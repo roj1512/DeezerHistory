@@ -14,7 +14,7 @@ var AppSecret string
 var BotToken string
 var BotUsername string
 var ConnectionURL string
-var LogChatID int64
+var CacheChatID int64
 var ServerAddress string
 
 func Initialize() error {
@@ -29,7 +29,7 @@ func Initialize() error {
 	BotToken = os.Getenv("BOT_TOKEN")
 	BotUsername = os.Getenv("BOT_USERNAME")
 	ConnectionURL = os.Getenv("CONNECTION_URL")
-	LogChatID, err = strconv.ParseInt(os.Getenv("LOG_CHAT_ID"), 10, 64)
+	CacheChatID, err = strconv.ParseInt(os.Getenv("CACHE_CHAT_ID"), 10, 64)
 	if err != nil {
 		return err
 	}

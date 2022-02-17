@@ -48,7 +48,7 @@ func inlineHandler(b *gotgbot.Bot, ctx *ext.Context) error {
 	if err != nil {
 		return err
 	}
-	msg, err := b.SendPhoto(env.LogChatID, photo, nil)
+	msg, err := b.SendPhoto(env.CacheChatID, photo, nil)
 	if err != nil {
 		return err
 	}
