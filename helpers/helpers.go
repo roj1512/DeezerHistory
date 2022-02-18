@@ -1,9 +1,10 @@
 package helpers
 
 import (
-	"dh/api"
 	"fmt"
 	"strings"
+
+	"github.com/roj1512/DeezerHistory/api"
 
 	"github.com/PaulSonOfLars/gotgbot/v2"
 	"github.com/gotgbot/keyboard"

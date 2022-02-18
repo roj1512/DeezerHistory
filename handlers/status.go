@@ -1,13 +1,14 @@
 package handlers
 
 import (
-	"dh/api"
-	"dh/helpers"
-	"dh/photo"
 	"errors"
 	"fmt"
 	"strconv"
 	"strings"
+
+	"github.com/roj1512/DeezerHistory/api"
+	"github.com/roj1512/DeezerHistory/helpers"
+	"github.com/roj1512/DeezerHistory/photo"
 
 	"github.com/PaulSonOfLars/gotgbot/v2"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"

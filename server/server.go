@@ -1,11 +1,12 @@
 package server
 
 import (
-	"dh/env"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/url"
+
+	"github.com/roj1512/DeezerHistory/env"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"

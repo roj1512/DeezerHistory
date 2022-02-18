@@ -1,11 +1,12 @@
 package handlers
 
 import (
-	"dh/database"
-	"dh/env"
-	"dh/helpers"
 	"fmt"
 	"strings"
+
+	"github.com/roj1512/DeezerHistory/database"
+	"github.com/roj1512/DeezerHistory/env"
+	"github.com/roj1512/DeezerHistory/helpers"
 
 	"github.com/PaulSonOfLars/gotgbot/v2"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"

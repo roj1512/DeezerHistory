@@ -1,4 +1,4 @@
-module dh
+module github.com/roj1512/DeezerHistory
 
 go 1.17
 

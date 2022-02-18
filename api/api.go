@@ -1,13 +1,14 @@
 package api
 
 import (
-	"dh/database"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/url"
+
+	"github.com/roj1512/DeezerHistory/database"
 
 	"gorm.io/gorm"
 )

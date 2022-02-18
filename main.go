@@ -1,11 +1,11 @@
 package main
 
 import (
-	"dh/database"
-	"dh/env"
-	"dh/handlers"
-	"dh/photo"
-	"dh/server"
+	"github.com/roj1512/DeezerHistory/database"
+	"github.com/roj1512/DeezerHistory/env"
+	"github.com/roj1512/DeezerHistory/handlers"
+	"github.com/roj1512/DeezerHistory/photo"
+	"github.com/roj1512/DeezerHistory/server"
 
 	"github.com/PaulSonOfLars/gotgbot/v2"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"
