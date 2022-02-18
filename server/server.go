@@ -36,7 +36,7 @@ func Start() error {
 		if err != nil {
 			return err
 		}
-		start := fmt.Sprintf("access_token:%s", values.Get("access_token"))
+		start := fmt.Sprintf("sak%s", values.Get("access_token"))
 		values = url.Values{}
 		values.Set("start", start)
 		return c.Redirect(fmt.Sprintf("https://t.me/%s?%s", env.BotUsername, values.Encode()))

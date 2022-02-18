@@ -14,8 +14,8 @@ func GetAccessKey(message string) string {
 	fields := strings.Fields(message)
 	if len(fields) == 2 {
 		kv := fields[1]
-		if len(kv) > 13 {
-			return kv[13:]
+		if len(kv) > 3 {
+			return kv[3:]
 		}
 	}
 	return ""
