@@ -11,13 +11,22 @@ import (
 	"github.com/chromedp/chromedp"
 )
 
-var ctx context.Context
-var cancel context.CancelFunc
-var address string
+var (
+	address  string
+	allocCtx context.Context
+	ctx      context.Context
+
+	ErrNotInitialized = errors.New("not initialized")
+)
 
 func Initialize() (bool, error) {
 	if ctx == nil {
-		ctx, cancel = chromedp.NewContext(context.Background())
+		allocCtx, _ = chromedp.NewExecAllocator(context.Background(), chromedp.Headless)
+		ctx, _ = chromedp.NewContext(allocCtx)
+		err := chromedp.Run(ctx)
+		if err != nil {
+			return false, err
+		}
 		wd, err := os.Getwd()
 		if err != nil {
 			return false, err
@@ -28,26 +37,31 @@ func Initialize() (bool, error) {
 	return false, nil
 }
 
-func Cancel() bool {
-	if cancel == nil {
-		return false
+func Destroy() error {
+	if ctx == nil {
+		return ErrNotInitialized
 	}
-	cancel()
-	return true
+	err := chromedp.Cancel(ctx)
+	if err != nil {
+		return err
+	}
+	return chromedp.Cancel(allocCtx)
 }
 
 func Generate(albumName string, albumPhoto string, artist string, title string, user string) ([]byte, error) {
 	photo := []byte{}
 	if ctx == nil {
-		return photo, errors.New("not initialized")
+		return photo, ErrNotInitialized
 	}
+	tab, cancel := chromedp.NewContext(ctx)
+	defer cancel()
 	query := url.Values{}
 	query.Set("albumName", albumName)
 	query.Set("albumPhoto", albumPhoto)
 	query.Set("artist", artist)
 	query.Set("title", title)
 	query.Set("user", user)
-	return photo, chromedp.Run(ctx, chromedp.Tasks{
+	return photo, chromedp.Run(tab, chromedp.Tasks{
 		chromedp.Navigate(fmt.Sprintf("%s?%s", address, query.Encode())),
 		chromedp.Screenshot("main", &photo, chromedp.NodeVisible),
 	})
