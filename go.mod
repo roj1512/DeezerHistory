@@ -6,6 +6,9 @@ require (
 	github.com/PaulSonOfLars/gotgbot/v2 v2.0.0-rc.6
 	github.com/chromedp/chromedp v0.7.7
 	github.com/gofiber/fiber/v2 v2.27.0
+	github.com/google/uuid v1.3.0
+	github.com/gotgbot/keyboard v1.0.0
+	github.com/joho/godotenv v1.4.0
 	gorm.io/driver/sqlite v1.2.6
 	gorm.io/gorm v1.22.5
 )
@@ -17,11 +20,8 @@ require (
 	github.com/gobwas/httphead v0.1.0 // indirect
 	github.com/gobwas/pool v0.2.1 // indirect
 	github.com/gobwas/ws v1.1.0 // indirect
-	github.com/google/uuid v1.3.0 // indirect
-	github.com/gotgbot/keyboard v1.0.0 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.4 // indirect
-	github.com/joho/godotenv v1.4.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/klauspost/compress v1.14.3 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
