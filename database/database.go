@@ -8,14 +8,16 @@ import (
 	"gorm.io/gorm/clause"
 )
 
+var (
+	db *gorm.DB
+
+	ErrNotInitialized = errors.New("not initialized")
+)
+
 type UserCredentials struct {
 	UserID    int64 `gorm:"primaryKey;autoIncrement:false"`
 	AccessKey string
 }
-
-var db *gorm.DB
-
-var ErrNotInitialized = errors.New("not initialized")
 
 func Initialize() error {
 	var err error

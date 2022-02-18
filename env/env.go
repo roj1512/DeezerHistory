@@ -7,15 +7,17 @@ import (
 	"github.com/joho/godotenv"
 )
 
-var AppID string
-var AppPermissions string
-var AppRedirectURL string
-var AppSecret string
-var BotToken string
-var BotUsername string
-var ConnectionURL string
-var CacheChatID int64
-var ServerAddress string
+var (
+	AppID          string
+	AppPermissions string
+	AppRedirectURL string
+	AppSecret      string
+	BotToken       string
+	BotUsername    string
+	CacheChatID    int64
+	ConnectionURL  string
+	ServerAddress  string
+)
 
 func Initialize() error {
 	err := godotenv.Load()
@@ -28,11 +30,11 @@ func Initialize() error {
 	AppSecret = os.Getenv("APP_SECRET")
 	BotToken = os.Getenv("BOT_TOKEN")
 	BotUsername = os.Getenv("BOT_USERNAME")
-	ConnectionURL = os.Getenv("CONNECTION_URL")
 	CacheChatID, err = strconv.ParseInt(os.Getenv("CACHE_CHAT_ID"), 10, 64)
 	if err != nil {
 		return err
 	}
+	ConnectionURL = os.Getenv("CONNECTION_URL")
 	ServerAddress = os.Getenv("SERVER_ADDRESS")
 	return nil
 }

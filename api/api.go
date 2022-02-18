@@ -12,8 +12,10 @@ import (
 	"gorm.io/gorm"
 )
 
-var ErrNotAuthorized = errors.New("not authorized")
-var ErrDeezerSide = errors.New("error on Deezer")
+var (
+	ErrDeezerSide    = errors.New("error on Deezer")
+	ErrNotAuthorized = errors.New("not authorized")
+)
 
 type Error struct {
 	Type string `json:"string"`
