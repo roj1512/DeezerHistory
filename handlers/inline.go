@@ -44,7 +44,7 @@ func inlineHandler(b *gotgbot.Bot, ctx *ext.Context) error {
 	}
 	indent = helpers.EnsureIndent(indent, len(tracks))
 	track := tracks[indent]
-	photo, err := photo.Generate(track.Artist.Name, track.Album.CoverBig, track.Artist.Name, track.Title, ctx.EffectiveUser.FirstName)
+	photo, err := photo.Generate(track.Album.Title, track.Album.CoverBig, track.Artist.Name, track.Title, ctx.EffectiveUser.FirstName)
 	if err != nil {
 		return err
 	}
